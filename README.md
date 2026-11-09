@@ -6,7 +6,6 @@ Projetos do site da Igreja Adventista do Sétimo Dia Glória (Blumenau/SC), `ias
 |---|---|---|
 | [`escala-direcao-de-culto/`](escala-direcao-de-culto/) | Escala de Direção de Culto (direção, pregadores, louvores e outros departamentos) | iasdgloria.com.br/escalas/direcao-de-culto/ |
 | [`escala-classe-escola-sabatina/`](escala-classe-escola-sabatina/) | Escala de responsáveis das classes da Escola Sabatina (primeira classe: Vivendo o Reino) | iasdgloria.com.br/escalas/classes-es/ |
-| [`keys/`](keys/) | Chaves SSH públicas dos computadores (a privada nunca vai para o repositório) | — |
 
 ## Regras para todos os projetos
 
