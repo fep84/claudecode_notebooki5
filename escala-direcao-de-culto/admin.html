@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - IASD Glória</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAd9UlEQVR42u2deXRUVfbv997n3qpKSAKEzMxDMyuCCCKgDbYKIQrYyqAytNBCP5vBhrbBpgG19TXqUwa1f6IyCQpogggy9OuHYEQFGSJTIMwZIHMgA0nVvefs98ethIAIaPv7kRTnu1yuhStWLvd+6ruHs8+5yMygpXUlkb4FWhoOLQ2HloZDS8OhpeHQ0nBoaTi0NBxaGg4tDYeWloZDS8OhpeHQ0nBoaTi0NBxaGg4tDYeWhkNLw6GlpeHQ0nBoaTi0NBxaGg4tDYeWhkNLw6Gl4dDScGhpaTi0NBxaGg4tDYeWhkNLw6Gl4dDScGhpOLQ0HFoaDi0tDYeWhkNLw/HfL2ZWN+u7A1C/NUFLO8fP8QwAyD1fmnzwJADchP6h4fhRKQYA+NfutNVbUwBAKQ2H1qXOsSXlqFRKhxWtS8gQhIp5067DHrdbw6F1UVIxIq7Zvr/AdtVxuzQcWhdtAxG9lv33lVsRGVFXK1rVbEMQ/v3D/5uaVaAsn1Ss4dACALClMgQlfbX/jU+/FaAQSTuH1kUyDp3OHjMv0ackswQl72jdEADw5mNEw3FJNDEEHcnMe+jFZWU+KVhJpnpBoleH5gBAGo6b2TME4ZGM3PjZS9PzS0lZAMDCHHxXh2CPS6mbMS3VcFziGQNmL83ILxbKZkRFokmD4J7tmi749CsilLpDetPWJofTc+JnL00vKBXKlsxCEKBYOPHh4gvWyZwiqGyYajhuOjLSMnITZjmeYUlmlyEkuacM7N73lpbL/r1TkNDVys2cZyzLKCpzPMM0hEXmqN7tXx7d/+Cp7JTM4tBg8+a8P8ZNXrUezcwb8PzS9IIShwxDoESzV+vY18c/BABzP01G02UIoeG46TLQtIzc/rOWZBSWXSSD3L1axyTOGBHicX118MTyrfuYzJt2HIpuTs8QhGmZef1nLskoLHXyDEOgInfP1jGJM0bWqxNUVHph/IJPgRUA27al4biJosmR9Jx+MxdnnCut7hl3tYpZ87eR9UKCSssrHpvz0dGcYoEMAA0bhOmwcrOQkZaZFz97aWZhiVBSMhsCFHl6tYlOmjGybp0gAPjjW2u2HDpjgG0pILZ6dWwJAESo4QhwMpx+RmZRWSUZKMldnYxn3/v8o6/ThPKyQhCuHm1iO7dqqBTfhHDQzUVGRm787KWZhaVCWlWe0btN7Jq/jXLImLZo/fwNu8n2SQWMGGTgo71v2ZJyHPSAcWCTkZqe03/WkqxLahNPz9bRiTNGhAV7AGD6og1zP98jlFeyEsjK9ExI6BZkmiu27iVCPWAcsFVranpOwuwPsgpLSV30jF6tY9bMHFUZTdbPXb+LpNeSSiDa5L61Yd3ZIx747NuDQeZNWvBTwJPhrJsMmL0ks7C40jNAkqdXm5ikv/k9Y9r7n8/fuBeV15aKABRSdJhn+dQhJRXefx84qWdIA5aM1PScAbOXZhaWUWU0UeTp3SZ6zcxRdesEA8Cz762bt2E3yQqHDCYjNNi1dsYTbRpHf5K8z0t13C7tHAGXZ/g9Y9aSjKJL+hm92sQmzhgVGuS+6BnS7xlAhMD/fDqhy68a5Z0vfT3pK5DWFXMNxYG/TGsEqmcYglJP5wx43qlaqzzD3btNdNLfRjrR5Nn3Pp+/YTcpry0VAjASIL0/cdCjvboAwMwlG47nlgCClPIK3ypEAJBKCSLtHLWIjErPeH5JZuElntG7bWzSjFEOGX9euG7+xj1VZCARCPHuhIFP9L0dABZt3rFo636TLUT64ZI9M2zalVZ8oUIQBfB+uECDQzELotT0nAGzP6hetSpy3906NnHGyLA6QQAwdeH6BZv2kCx3yAAiRloy6eGR93YFgJVb9zz9zw2kWCpmJbu2bgTVBowVMyKkZeV1m/xm8oETAcwHBRgZhHj2XEn87KUZhcVU3TPaxX1SWZs8+976NzftIeW76BkoFk0YOPzXtwHAh1/seXJekmIJrBSJmFB3n04tAaCqQUqIinniwJ5d2zTqN2v5lu+PCqKAbJEFDhzMzMxSqVGvrj5z7oIBl3hG0owRTj9jyrvr52/cLVSFLRUCIpJCWjJ58OP3dgWAj7elPDn/M6kYlEQCJuPJ++4IC3ZLpS7bmsAMr49JCHbR0FdWHcsuwEDchk8BZBsgiGYu3bjtcJZQPluyedEznggNcvKMtW9t3EvSZ0lGACRkEosnDh7+684A8NEXKb+bmwjKAlYIIMFoFhH056H3MF++L4EQGTiqXsh9tzYtto0ZSzYhIqB2jhqchH6578Rra3cIWWFLfzS5u3Vs0l9HOP2MPy38bMHm7x3PIAAkUkiLJw16vG8XAEj8KuV389ZYilkpAEQSBLx48pBgl4uBf7ijiRmYOSy0Dkrfv3YdPnk2HzjQzCMQ4Kjc92xNfW8dACrJBqJCV6+2sUkzR4ZW1iZvb0pxuuOIAEQKaemkwY/16QIAa7anjHo9EdhGJRnAIFTCteCp/j3bN5NKXWU7k1TMUpXZmHzgJBFKVhqOGhdQCPGjrSn7ss4LZSOiNFy3N49cM8NPxpR31y/YtEdwhS0VIiAQIy2Z/PDwPrcDwJrkPU+89oklGZRSAIZAi1wT+nUZG3+XVPxjbQxCRMTcomJgQIKdaZlHMwvMwJo2DQQ4CNGy5WuJ21hJIFZIsfU8i6YMcciY+u7atzfuIeWzbEYABAJhvD9x8GO/7gwAq7bseey1JFsBKqkATEFSeJ5J6PraUwlSqR8b4VDMAJx7rmTXkSxkSzGezC54btGG3ceyAun0wVoPh1SMCF98f+xYTolgSzHVr+PaNHtUm4aRADBl4bo3N35PjmcAIBIjvj9x4BN9uwBA0ra9o+YmMaJDhiHIFubE/rfPeXKAE01+bPO0UoyIa7cfyK+QpiAg0aphVKvGEX95b30g7beu9XA4KxyfJH/PSATIRAvGP9S2SSwATH33s7c37SXl9XsGEghj8eSHH+/TBQBWbtn7xBuJgADSVgCmQVJ4nhnQ7dWx1yKDGREKS8v/kfQlKFspJoLbWsTe36V1clr2gVNnnUaIhuPGkyEILVvuSMsEafnQHP9A50fvvg38PdAUUhVVnS4men/iQCcD/fCL3aPmJSkGrvQMC81J/W//x5PxVyfDsQ1B9PKH/8o85yUlbaXYZ9/eqiEAgBm0fudhCJSeRy2HAwARM/KKjmcVAFGLiJCXRg0AgEWbvnlz8y4hvf5+BhKQWDTJ7xkfbEkZPe9TBMlObWKgEp5nBnR7Zey1yXCGylZu2/vPjbvJ9jEzkhFX39O+aXRm/jlkuedYBgAERmwxartzAOLJ7CILCAFfHv1ASJDrm4MnJ76zkVhJxYTASAz0/oSBj/fpDAArtuwaM28tgT9vNATZaD4z4PY5T14vGd+lpf/x7c9txcgKERUZ4/p1N4T4Yt9xBs4uLINAOcyjtsMBAHD0bAG4g7o0DBt81y35pWVj5ydazCglADARIi6a/LBTmyzbsvepBeuIpTOMYQhUwv3MgK7XT8bOI6cHvbC8pMKLygYAFqJhmDku4a6i0vIte4+BtGUALbIEQilrCIFkDLyrAyI8v3zzsYJyAZIRgAQiLp7kr1pXbNk9dl4iKAlc6Rnknuwng6+HjN1p6QNfWF5QVoHKYkQSxCjmj3uwfkjQ+5u/PVviA2mHelxV1GrnuPHyWjb7Lozo2yUtK/+9TSnEUjETChS0aNLgYfd0BoAPtuweM38tMTOoSs/wTO7f5R/X7Rk7jpwe9MKywlIfsZSABoEU7ikP3pHQo2NhyYU3132D0gbDbNs0hhkUM9X+tZba7RzOA/1VbISp7Oj6oc8v36zIQGREUqZrwbgBDhkfbflu7LwkZMWgmMEUZJP7Tw92fWXsgOv0jJ2HTw964QM/GZXbGvrd0mT2E/cDwKsff3G22BLEzKpzq1jEADldrrbDgQAQVS+4Z4fmqadz1nxzGKVXKVBkPhN/+5gHugPAii3f/W7BZ8gISjKDIVAKz+T4ri+P7u9krNf2jMOnB764rDoZtvAMuK3ZqumPuwyxcWfq/HXfGeyzFMSEuUJMMzF5nyAMgAmgWg4HAAA0iwkfes+tSV/vl2SaCCxcd7WJevl38QCw/N/fjZ23BhQzS/Z3x91THryj0jOuRoYziLoj9dTAF5cXllqofBfJuLXJimnDPW4zNTP39wvWSCWREUzPoDtvzS2+8M6m76pdnYbjhjpHvTpBo3/Tde03qawsmynMg2//8beE+O+UtDFvrWdAfz9DoC3ck+PveGl0P2fd5KpkKEGYcvzMoL8vLyqtILYVoGkIKTwJnZp9NP3xIJdZWFw6+rVVeWU+ZGkrZdi+Pz3cExizCgsVB8Le2gBonwMA5BSVnMgpBNuWwpj0YI92jaL3n85+cm4SsnK6laYQkjxTH+o2Z8y1axPFTEi558pGvbq68IJPoD+aWOSK79Rk5fThHpdZcL5s0AvL9p4uINsHAGy4+93Rsml0+LeHTpzOLi7z+rD21yy1Hg7FCgBO5BRd8EkUIjKYxif09FrWuHmf5BR7UTrdcbTJnBzf9aVR1/YMZ7GGWT3xjxVH8koE27Zkg1CSZ0CnZqumP+EyzYILpYNeXrrjeL7BPgXMSEEmzxmbUOGzvth/QhDZdiAMdgTIJBghMDAL8/cPdI8Iq/P2uu27TxUKWSGBTYG24flDv85zxsbb8hpVa6Vt4PMf/Gtb2lmhvP6hMsPTr1PTVdMfM00BAH98c61Dhi1ZELIwXhpx369iIrbtO55bJhuEegzh3NjabR0BsqmJGRCJbd8jvW8tq/C+lpQM0lIKCNFG1/0d414ZE6+YBV2bDGdnw2ufbkel7Mrh9fjOzVZNe9wUhIDj5icmfXvckBWWYqfb8Ui3Vk8n9CzzeV9avQVItIgJDw1yO5Bp57jxCna7ACmmXp22jaNWJ+/LK2diCQAszG4to1dNG2GSQMBrth+cmDJ3zTYbBDILQik8D3ZpsfLZ4S5DIOL4+YlLth0UymsrFohSuNtEhy74X4MBYPHmXTuO5ijpi6wXAgFxqG2th8P5drZpFBERbCCiIeiTL/cRO8ttIjLEs2zqkDoetzOEcU37EUS550qSth8E6UMEm4wHOzf/cNpjLtMAgHHzExdvO2QonzOiLEk0iwxN/OuI8NDg42cLXvzwC6EkAPa9rSUERAe91sOBiFJxkNvsf3trJVVphfdQZi5LCwDZMP+Q0K15TANbXteOVie33XEk47xPGYSKXD1bxa74i98znpqfuGTrASHLLVsSMAsjIsT9+ayRv2oYaUn55BsfF5X7gJWh7J7tmkNAnCEWCGHFsYQ/P9oHmJMPnCop8wIrm6lRPfeEh3o5qcb1V8VZBSVEhgKKCDEXTxnqNg1mfmp+4tJth5z8lIAVGW6ipZMebhUXycwT3/7s22M5LpBSGN3bNGrbJEopDoBV+wAZMJZKtWkcNeWRe74+dNoliJlBmEN7dwoLcjP/tJUOl0AFrJjfGp/QLLo+M4+bl7R060Ehy23JBADC8Bjmh88Ov++O9gDw+povF2/dL5RXKgak0fd11WOCNUuCSCmePLj36N90BkRAAmn9+paWzPyT60lEMt13d2j8YI9bpVJPzUtcmnxIqAqHDEVkoPHR1GEJd7YFgIUbvn1u6f8T0suKlDBaRoYMvbsTX7dXaTj+54ILM7SMi2wSVZ+EAUrWDwn6GaujzMBSPTf0XiIcNz9p2ZcXPYNJBJvm6unDBvRoAwDvbdox8Z31wNJWikgBij8/fLfHbTqvHdVw1LTMVDFzQve2jAQA/LOWvsq9VpRH9enU6q3Ptn+QfMjZdksAiowgD3381yHx3fye8fQ7G4AVgCJAG133dWg46r47pFKVHTANR81KPgARf9+ve30Pkekpq6j4GbH/fFn54B4dU46feWbRZrJ9UjEBM5khQZT43PD7OrcHgIWffzvhnfUkbQZ2ppxDPTT/6cFEAbWfOrDgIFLM0fVDXx55P5ueNV/vJ8Trx8OJBc1jwnu0b/qH+YmIwEoisyIj2IOJzw27t1M7AHjn828mvLsJgRUoACASCmHZM79tEdMgMBZjAxOOqsrlyX7dx/dp986/vv9y/wlDXO/JKs6EzmN9Omfmn9ubUUjSdogLMsUn0x/rc2s7AFi4ceek9zYKkM5mfEGkhGv2sL7x3TrIgChfAxkOp3KRSs0b/9Dzw+8Z/urq3ccy8foOp2ZmQiwt9763+TtWEgAUkss0V08bdu9tbQDg3Q3fTli4kZSSymYAIdAm1/NDek0fdq9zeGGA3UkM1AMTnXWvtMxcg7BFXCTztTcaOUcDbjt44v6/LkZpIQmPaa6cNvSBrn7PmPjOemKWbAOgILTJNfORXjMeu9eZJgy8exiwx6868aV1o6hqhS4DIFe2PX441OF8TY5k5KEwDFAWGvPHD/CTseGbCe9uJmbFEgCFQBtdLw7t/ZehfQPSMwIcDudEF8uWgEBIVQM+l1UTzrJLdUqQUSnlAzHyng4jfnMHAPzXhh2TFm4UrKSSgEBAEs1ZQ3r9ZWhfn22bQgTqm8wDZp6DmYH9+yPRmehBADIunqZiSVVSVp5VUExEzBBZNyi6fpgTDi4NOozCjPDAiyP7AcDa7SmTFm5AJRUrBhBA0nC9MLT3tKF9mdllGE48cn4vogNfgDTBjFqKAgAqvvhIKod4Lj6SsgpfRt65E2cL087kHU7PTTuTf6awpOxCee75cqc1ERHqaREb0fuWZpMe6hkTXrcq9yIiFMbv42+PDQ/btv/4uLfWCZaKlarcWDvzkZ7ThvZ1OiLFFyqaRIX/YMkXFbPzhnMHmFqKSq2Bw/l2AgAROmFA4MVHUu7z5RaVncguTM3IPnW2MOVk9rEz+TnnSy0WIAQwACtgBVVLLcgFpd6C49nfncpfuW3fhtmj2zaJdn6B17JVRdkzA3unZeU98vKHxRd8/qNdDLLRNXtIr+eG3QsA2UWlv31h2eEz+a3jwlvGhLdvGt0ypn7LhpFNo8IjwuoQIgmsTrNif6TD2rOaX2vgqP7tlErlnis9cabgYEb2kfTcQ5m5J3PO5RaVllmMRAzIrEBJUExgEdgAwAqZlYMG+R8PE0gDOKsY3li7feHE3zrwlZR7+3RsHOJx3//q+6XllolSCSRAG1yzHvWTkVtY/ODzy/ZlFLBVsedk3p7TBbzzGCiJthUeFtQoon6LRuFdm8e1bRjRIjYiLqJu/ZAgUc3YassEYU0vZauyga9TTx/Lyk9Nz03LzD2eW5SZd66k3GLDBHB6lQpYESgERKpEAa/8t0MygIQ/N2UGYUS5OW3RNLfLIMQXVvwbAHLOlb7/1TEuLwE/lDh7aO/pQ/s4njFo9uK96fmCLakAHT8gYEapFBABCud8KVDSABlZN7hZdHjrhpGt48LbN4vr3CIurkFYreCjRsPhnPVJhE/NT1yyZR8iMApkxSxBKQQmgGuicFnLj4V5d9tGox+4QyqFgAzMzC5DDOrRMchtAsDRrLwK2z54OseylHRaYYxRdeskdG8HAHlFxf1nLtufVeAM/lzhhiKgkwkRKMkKEIiQCJAAEFjWD/a8O2HQg3e2r/ndkZoLh1N9EOK4uauXJKeiVXE9rnCNICpQCs+zA7u/OPKBn3FJ2UVlA2cvSknPF2xdkYwrseLEL0JiJ7pJRI8pVj47LL5buxrOB9VUMtghY8wbHy9NPiykVzFIZluys6rxnzB9wWtbtiz3WpYtLVvaUlm2rPpAxayYbamk8v/bZ0sAyC08nzBz8fcZhddPRlWNLVnZ0n/xpOwKnz381dUbdh4yBNlSaTh+KhngeMaK5EMkK67/YVzHp4NANg0R5DZNQ5iGMASZxsVGFiESoiFIEBqCANhliLOFJfGzPtifmYe29z+8GAVIrMq9vmGvrN743ZGazEeNCytVZIx54+PlXx12prB+sb8tAgPF1A1qElW/yvYtBY3C6yydOizY7UaEpO37X03cTsS3NY+cN/5hQ1BeUfH9M5ccyir6sTzj530pmYTLZa6c+uiA7jU0/zBqGBngkPHU3NUrklOF9Nq/6JmNzACgsosrsktyARkAARSgOHDCrvDadTxuAMjKL9mbUQTs+/MjvQ1BZwqLB85adiizQCjrF7wYBUBKer08bM7K1dMe69+trWVL06hZp2NTDSOjKs84QuoXJqOaW0qhbCGlkLbBkqRVN8RNlX2UILdBBo7o1W7QnR3zSkoTnl+8L6tAsPWLX4wCIFZeWw59ZdXnOw6ZhrBsqeG4Ghm/n7t6RfKhXzqaIFR7D5eTIfr/UazAeb9K5TNToCx7XHwPBhg3b83BzPOG8lVdzC/bCXf4qPD5hs5ZtWnXEdMQNSr/oJpCBjuesXpZ8pGfVA5cEQUCEIgCSSBi5aQgMxOAIVAgXfaMqzXioczrjQrGrq0bP7d4w+d7TxnSZysWSIZwPsp/Yc5/MQSS09v4udA4fFhSPvq/P9qwo2bVL1RDPAMRx85d5XjGT3JXRCQEgWgIFIiIwABKGFK4lGEqw+2wAoAACMKU5JEkmFlcxkfln4oveB/q0WHdrtTX1+00lJdBMaAyXJLc/kYWICAoYSrhscmthMkomMEh8mfgogBQSa9lDZmzauPOw4agGhJfjBtNBjvPZezc1cuT0wy2rat6hvP0EQiJWQEzKwBGgWSw08OWVpCgxlH1GkfX7doirmVcVPPoupH1QqViAkjLyt91PDN534kdaZlKuMj2wqV7npi5dVxERF33lHfWC6UsKcH0RAaL+7q06tWxecvY8Mi6oc7PH8sqSMvOSz2VfSwzP6OgOOdcMZNb+RMXBSxBKYEXr5PxalurL/rHP1aufPaRhDs71oT65UaWsn7PAMczUqlaaL+svei8EFg5L0IiAST8dsDSxSoyvE6HxlGtGkZ0bBrTPKZBs6jwxpF1r575f516as7qLzalnGLbB4CRdYMP/teUeiFBziP525KNr6zdASzDg11PJ/QY80C32AZhV/m0opILZwrOp50pPJqVfyQzNzU9+2R2UWFZBQgXOJGIFSiJoAiuhou/vhVi5bRhA2pA//SGwcFOIcnseIZQ5VIBAF9cmFCsAAEJkQAFILCSgmVM/ZBWcRG/imvQulFkm8bRrWLCo8NDwoI8l38Xlf+lONUd3kluqka/Xl/z5ewVW7y2iggxD/xzav3QIAAoLivv9PQbZ0rsHi0bvPX04A5N4+DiOM/lH4WIV5wRzDtXejrv3PGs/AOnzx49k38qp+hkzrmiCz4kg4lQKWDJV1oeQmaFwmXQqr8Mu+H9jxsDh3NbAeCpuZ8s27bPRWxZUjIDUuWqJoKyUdoRdes0jQ5v3TCyXeOIto2jWsQ2aBJZPyzYfTkKzM5bLCrna64R8qV/YwGu/jJlxLy1EUFUBce2/ScemLX8lsb1trw8NrROsGVLQ4ir5w9O4+7quGQXlhw9U3DibH5aVl5qZt6xMwU5hcXnLvjAMNm/sCydqskgZESXaX44dUh8t3Y38I3oxg0hgwF8lnxqXuKqHccZyMvIQoD0RYR4YsLDWsU1aNckumurhs2i6zeMCAsPrfND11HM/tkZBHR63uIn1AuCiJktKYfcfdvmXYdXfrm/6v4fOpVDwEunDAmtE2xLdT2NqWpjaFg9YlatKhNiTHhoTHho747NnB/wWTL3fOnJs/kH0nOOpOemnSk8eiY/71zJBZttYYCCchsGv7Ti4+nDHrqz441a378BcDjnbv19xeaV2w/e2rhBy7gmreIi2zeOats4slFEWETdkB/eiOqu7riCQPwPT4FFRIHEDC+Njv/u6BlfZYFQUFo+sHvL9k1i/hNL9w+TVuJSfa4RAIjQZYpGEXUbRdTtfUtL538p91pZBeczcgtT0rOPpOelpecdzz0/6v+s2jonvFOLuBvCxw3LOdJzC6WCxpH1fvgALkXhf2Je99Dp7FYNI12GAIDDGbkhQe648DDE/8Zfe6WJ6Mt/pvhC+dnC0tjw0LBgT1UgvlmqleooON+nGzK6fUPu+48nLlW43Pi55BtZrTAwQo0Yza5u2s6bH2vCCJ+Dyw28RQG7HVLrPxfpW6Cl4dDScGhpOLQ0HFoaDi0Nh5aGQ0vDoaXh0NJwaGlpOLQ0HFoaDi0Nh5aGQ0vDoaXh0NJwaGk4tDQcWloaDi0Nh5aGQ0vDoaXh0NJwaGk4tDQcWhoOLQ2HlpaGQ0vDoaXh0NJwaGk4tDQcWhoOLQ2HloZDK+D1/wHx16EhbkUA5gAAAABJRU5ErkJggg==">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1A5F7A;
+            --secondary-blue: #4A7A96;
+            --bg-white: #FFFFFF;
+            --bg-page: #F4F6F8;
+            --text-main: #1E293B;
+            --border-color: #E2E8F0;
+            --success-green: #16A34A;
+            --error-red: #DC2626;
+            --warning-amber: #D97706;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 560px;
+            background-color: var(--bg-white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* ===== Responsivo: telas maiores (tablet/desktop) ===== */
+        @media (min-width: 700px) {
+            body { padding: 24px; }
+
+            .app {
+                max-width: 1100px;
+                min-height: auto;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            #resumoContainer,
+            #incluirListaContainer,
+            #usuariosContainer,
+            #backupsContainer,
+            #historicoContainer {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                align-content: start;
+            }
+
+            .resumo-card, .incluir-card, .usuario-card, .backup-card, .log-card {
+                margin-bottom: 0;
+            }
+
+            .incluir-month-header { grid-column: 1 / -1; }
+
+            .aba-conteudo { padding: 20px 28px; }
+        }
+
+        @media (min-width: 1000px) {
+            #resumoContainer,
+            #incluirListaContainer,
+            #usuariosContainer,
+            #backupsContainer,
+            #historicoContainer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .header .subtitulo {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        /* ===== Login ===== */
+        .login-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .login-screen i.fa-user-shield {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 14px;
+        }
+
+        .login-screen p {
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-bottom: 20px;
+        }
+
+        .aviso-teste {
+            background-color: #FEF3C7;
+            color: #92400E;
+            font-size: 0.75rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input[type="email"], input[type="text"] {
+            width: 100%;
+            max-width: 280px;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+
+        input:focus { outline: none; border-color: var(--primary-blue); }
+
+        .btn {
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            background-color: var(--primary-blue);
+        }
+
+        .btn:hover { background-color: var(--secondary-blue); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .btn-largo { width: 100%; max-width: 280px; }
+        .btn-perigo { background-color: var(--error-red); }
+        .btn-perigo:hover { background-color: #B91C1C; }
+        .btn-pequeno { padding: 6px 12px; font-size: 0.8rem; }
+
+        .erro-msg {
+            color: var(--error-red);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            min-height: 1.2em;
+        }
+
+        /* ===== Painel ===== */
+        .painel { display: none; }
+
+        .painel-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: #FAFAFA;
+        }
+
+        .painel-topo .usuario { font-size: 0.85rem; color: #64748B; }
+        .painel-topo .usuario strong { color: var(--text-main); }
+
+        .btn-sair {
+            background: none; border: none;
+            color: var(--error-red);
+            font-size: 0.85rem; font-weight: 700;
+            cursor: pointer;
+        }
+
+        .abas {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .aba-btn {
+            flex: 1;
+            padding: 12px 8px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .aba-btn.ativa {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        .aba-conteudo { display: none; padding: 16px 20px; }
+        .aba-conteudo.ativa { display: block; }
+
+        .loading { text-align: center; padding: 30px 0; color: #64748B; }
+
+        /* ===== Visão Geral ===== */
+        .periodo-box {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-page);
+            margin-bottom: 16px;
+        }
+
+        .periodo-campos { display: flex; gap: 10px; }
+        .periodo-campo { flex: 1; }
+        .periodo-campo label { display: block; font-size: 0.75rem; color: #64748B; margin-bottom: 4px; }
+        .periodo-campo input[type="date"] {
+            width: 100%; padding: 8px 10px; font-size: 0.85rem;
+            border: 2px solid var(--border-color); border-radius: 8px;
+        }
+
+        /* ===== Aba: Incluir Escalas ===== */
+        .dept-seletor-incluir { margin-bottom: 14px; }
+        .dept-seletor-incluir label {
+            display: block; font-size: 0.85rem; font-weight: 700;
+            color: var(--primary-blue); margin-bottom: 8px;
+        }
+        .dept-seletor-incluir select {
+            width: 100%; padding: 10px 12px; font-size: 1rem;
+            font-family: 'Roboto', sans-serif; border: 2px solid var(--border-color);
+            border-radius: 8px; color: var(--text-main); background-color: white;
+        }
+
+        .periodo-titulo-rapido {
+            display: block; font-size: 0.85rem; font-weight: 700;
+            color: var(--primary-blue); margin-bottom: 8px;
+        }
+
+        .mes-rapido {
+            width: 100%; padding: 10px 12px; font-size: 0.95rem;
+            font-family: 'Roboto', sans-serif; border: 2px solid var(--border-color);
+            border-radius: 8px; color: var(--text-main); background-color: white;
+        }
+
+        .filtro-abas { display: flex; gap: 6px; margin-bottom: 12px; }
+        .filtro-aba-btn {
+            flex: 1; padding: 9px 8px; background: white; cursor: pointer;
+            border: 2px solid var(--border-color); border-radius: 8px;
+            font-size: 0.8rem; font-weight: 700; color: #64748B;
+            font-family: 'Roboto', sans-serif;
+        }
+        .filtro-aba-btn.ativa {
+            background: var(--primary-blue); border-color: var(--primary-blue); color: white;
+        }
+        .resumo-card.clicavel { cursor: pointer; }
+        .resumo-card.clicavel:hover { filter: brightness(0.97); }
+        .filtro-painel { display: none; }
+        .filtro-painel.ativa { display: block; }
+        .mostrar-passadas {
+            display: flex; align-items: center; gap: 8px; margin-top: 12px;
+            font-size: 0.8rem; color: #64748B; cursor: pointer;
+        }
+
+        .periodo-divisor {
+            display: flex; align-items: center; text-align: center;
+            font-size: 0.7rem; color: #94A3B8; margin: 12px 0;
+        }
+        .periodo-divisor::before, .periodo-divisor::after {
+            content: ''; flex: 1; border-top: 1px solid var(--border-color);
+        }
+        .periodo-divisor span { padding: 0 10px; white-space: nowrap; }
+
+        .incluir-month-header {
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            text-align: center;
+            padding: 8px 14px;
+            border-radius: 6px;
+            margin: 14px 0 10px 0;
+        }
+
+        #incluirListaContainer .incluir-month-header:first-child { margin-top: 0; }
+
+        .incluir-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .incluir-data-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .incluir-data-label .dia-semana { font-weight: 400; color: #64748B; }
+
+        .incluir-input-wrapper {
+            position: relative;
+            border-radius: 8px;
+            transition: background-color 0.15s;
+        }
+
+        .incluir-input-wrapper.vazio { background-color: #FEF2F2; }
+        .incluir-input-wrapper.preenchido { background-color: #F0FDF4; }
+
+        .incluir-input-wrapper input[type="text"] {
+            width: 100%;
+            padding: 9px 68px 9px 11px;
+            font-size: 0.95rem;
+            font-family: 'Roboto', sans-serif;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: transparent;
+        }
+
+        .incluir-input-wrapper input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .incluir-status-icon {
+            position: absolute;
+            right: 42px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95rem;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .incluir-input-wrapper.vazio .incluir-status-icon { color: var(--error-red); }
+        .incluir-input-wrapper.preenchido .incluir-status-icon { color: var(--success-green); }
+
+        .incluir-btn-salvar-individual {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 6px;
+            background-color: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .incluir-btn-salvar-individual:hover { background-color: var(--secondary-blue); }
+        .incluir-btn-salvar-individual:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Caixa de Entrada salva: texto cinza escuro e campo travado; botão vira "Editar" */
+        .incluir-input-wrapper.salvo input[type="text"] { color: #475569; cursor: default; }
+        .incluir-btn-salvar-individual.modo-editar { background-color: #64748B; }
+        .incluir-btn-salvar-individual.modo-editar:hover { background-color: #475569; }
+
+        .incluir-campo-provai { margin-bottom: 8px; }
+        .incluir-campo-provai label {
+            display: block; font-size: 0.7rem; color: #64748B; margin-bottom: 3px;
+        }
+
+        .salvar-incluir-container { margin-top: 16px; }
+        .salvar-incluir-container .btn { max-width: none; }
+
+        .resumo-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 14px; border: 1px solid var(--border-color);
+            border-left: 4px solid var(--secondary-blue); border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .resumo-card.tem-pendencia { border-left-color: var(--error-red); }
+        .resumo-card .nome-dept { font-size: 0.9rem; font-weight: 500; }
+        .badge-pendencia {
+            font-size: 0.75rem; font-weight: 700; padding: 3px 10px;
+            border-radius: 999px; background-color: var(--error-red); color: white;
+        }
+        .badge-ok {
+            font-size: 0.75rem; font-weight: 700; padding: 3px 10px;
+            border-radius: 999px; background-color: var(--success-green); color: white;
+        }
+
+        /* ===== Usuários ===== */
+        .usuario-card {
+            padding: 12px 14px; border: 1px solid var(--border-color);
+            border-radius: 8px; margin-bottom: 10px;
+        }
+
+        .usuario-card .email { font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
+
+        .chip-dept {
+            display: inline-block; font-size: 0.7rem; font-weight: 600;
+            padding: 3px 9px; border-radius: 999px; margin: 2px 4px 2px 0;
+            background-color: #E0F2FE; color: var(--primary-blue);
+        }
+
+        .chip-dept.admin { background-color: #FEF3C7; color: #92400E; }
+
+        .usuario-acoes { margin-top: 8px; display: flex; gap: 8px; }
+
+        .form-usuario {
+            border: 2px dashed var(--border-color); border-radius: 8px;
+            padding: 14px; margin-top: 16px;
+        }
+
+        .form-usuario h3 { font-size: 0.9rem; margin-bottom: 10px; color: var(--primary-blue); }
+
+        .checkbox-deps { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+        .checkbox-deps label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 400; cursor: pointer;
+        }
+        .checkbox-deps input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--primary-blue); }
+
+        /* ===== Backups ===== */
+        .backup-card {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 14px; border: 1px solid var(--border-color);
+            border-radius: 8px; margin-bottom: 8px; gap: 10px;
+        }
+
+        .backup-info { font-size: 0.8rem; }
+        .backup-info .data { font-weight: 700; }
+        .backup-info .tamanho { color: #64748B; }
+
+        .backup-manual { margin-bottom: 16px; }
+        .backup-manual-dica { font-size: 0.75rem; color: #64748B; margin-top: 6px; text-align: center; }
+
+        /* Abas por tipo de backup (dentro da aba Backups) */
+        .backup-abas {
+            display: flex; gap: 6px; margin-bottom: 12px;
+        }
+        .backup-aba-btn {
+            flex: 1; padding: 8px 6px;
+            background-color: var(--bg-page); border: 1px solid var(--border-color);
+            border-radius: 8px; cursor: pointer;
+            font-size: 0.75rem; font-weight: 700; color: #64748B;
+        }
+        .backup-aba-btn.ativa {
+            background-color: var(--primary-blue); border-color: var(--primary-blue); color: #fff;
+        }
+        .backup-aba-dica { font-size: 0.75rem; color: #64748B; margin-bottom: 10px; }
+        .backup-info .responsavel { color: var(--text-main); margin-top: 2px; }
+
+        /* ===== Histórico ===== */
+        .log-card {
+            padding: 10px 14px; border-left: 3px solid var(--secondary-blue);
+            background-color: var(--bg-page); border-radius: 6px; margin-bottom: 8px;
+        }
+
+        .log-card .log-topo {
+            display: flex; justify-content: space-between;
+            font-size: 0.75rem; color: #64748B; margin-bottom: 4px;
+        }
+
+        .log-card .log-acao { font-weight: 700; color: var(--text-main); font-size: 0.85rem; }
+        .log-card .log-detalhes { font-size: 0.75rem; color: #64748B; margin-top: 4px; }
+
+        .status-msg {
+            text-align: center; font-size: 0.85rem; padding: 10px 0; min-height: 1.2em;
+        }
+        .status-msg.sucesso { color: var(--success-green); }
+        .status-msg.erro { color: var(--error-red); }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="header">
+            <h1>Painel Administrativo</h1>
+            <div class="subtitulo">Departamento da Direção de Culto<br>IASD Glória - Blumenau/SC</div>
+        </div>
+
+        <!-- ===== Login ===== -->
+        <div id="loginScreen" class="login-screen">
+            <i class="fa-solid fa-user-shield"></i>
+            <p>Acesso restrito a administradores.</p>
+            <div id="loginTeste">
+            <div class="aviso-teste">
+                <i class="fa-solid fa-flask"></i> <strong>Modo de teste:</strong> login ainda não verifica
+                identidade real (isso virá com o login do Google).
+            </div>
+            <input type="email" id="emailInput" placeholder="seuemail@iasdgloria" autocomplete="off"
+                   onkeydown="if(event.key==='Enter') fazerLogin()">
+            <button class="btn btn-largo" onclick="fazerLogin()">Entrar</button>
+            </div>
+            <div id="loginGoogle" style="display:none">
+                <div id="googleBotao" style="display:flex; justify-content:center; margin-top:10px"></div>
+            </div>
+            <div id="loginErro" class="erro-msg"></div>
+        </div>
+
+        <!-- ===== Painel ===== -->
+        <div id="painel" class="painel">
+            <div class="painel-topo">
+                <div class="usuario">Logado como <strong id="usuarioEmail"></strong></div>
+                <button class="btn-sair" onclick="sair()">Sair</button>
+            </div>
+
+            <div class="abas">
+                <button class="aba-btn ativa" data-aba="geral" onclick="mudarAba('geral')">
+                    <i class="fa-solid fa-chart-simple"></i><br>Visão Geral
+                </button>
+                <button class="aba-btn" data-aba="incluir" onclick="mudarAba('incluir')">
+                    <i class="fa-solid fa-pen-to-square"></i><br>Incluir Escalas
+                </button>
+                <button class="aba-btn" data-aba="usuarios" onclick="mudarAba('usuarios')">
+                    <i class="fa-solid fa-users-gear"></i><br>Usuários
+                </button>
+                <button class="aba-btn" data-aba="backups" onclick="mudarAba('backups')">
+                    <i class="fa-solid fa-clock-rotate-left"></i><br>Backups
+                </button>
+                <button class="aba-btn" data-aba="historico" onclick="mudarAba('historico')">
+                    <i class="fa-solid fa-list-check"></i><br>Histórico
+                </button>
+            </div>
+
+            <!-- ===== Aba: Visão Geral ===== -->
+            <div id="abaGeral" class="aba-conteudo ativa">
+                <div class="periodo-box" id="geralFiltro">
+                    <div class="filtro-abas">
+                        <button type="button" class="filtro-aba-btn ativa" data-filtro="mes" onclick="mudarFiltro('geral', 'mes')"><i class="fa-solid fa-calendar-days"></i> Por mês</button>
+                        <button type="button" class="filtro-aba-btn" data-filtro="periodo" onclick="mudarFiltro('geral', 'periodo')"><i class="fa-solid fa-calendar-week"></i> Por período</button>
+                    </div>
+
+                    <div id="geralFiltroMes" class="filtro-painel ativa">
+                        <select id="geralMesRapido" class="mes-rapido" onchange="aplicarMesRapido('geral')"></select>
+                    </div>
+
+                    <div id="geralFiltroPeriodo" class="filtro-painel">
+                        <div class="periodo-campos">
+                            <div class="periodo-campo">
+                                <label for="geralDataInicio">De</label>
+                                <input type="date" id="geralDataInicio" onchange="carregarVisaoGeral()">
+                            </div>
+                            <div class="periodo-campo">
+                                <label for="geralDataFim">Até</label>
+                                <input type="date" id="geralDataFim" onchange="carregarVisaoGeral()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="mostrar-passadas">
+                        <input type="checkbox" id="geralMostrarPassadas" onchange="alternarPassadas('geral')">
+                        Mostrar também escalas passadas
+                    </label>
+                </div>
+
+                <div id="resumoContainer"><div class="loading">Carregando...</div></div>
+            </div>
+
+            <!-- ===== Aba: Incluir Escalas ===== -->
+            <div id="abaIncluir" class="aba-conteudo">
+                <div class="dept-seletor-incluir">
+                    <label for="incluirDeptSelect"><i class="fa-solid fa-users"></i> Departamento:</label>
+                    <select id="incluirDeptSelect" onchange="carregarIncluirEscalas()"></select>
+                </div>
+
+                <div class="periodo-box" id="incluirFiltro">
+                    <div class="filtro-abas">
+                        <button type="button" class="filtro-aba-btn ativa" data-filtro="mes" onclick="mudarFiltro('incluir', 'mes')"><i class="fa-solid fa-calendar-days"></i> Por mês</button>
+                        <button type="button" class="filtro-aba-btn" data-filtro="periodo" onclick="mudarFiltro('incluir', 'periodo')"><i class="fa-solid fa-calendar-week"></i> Por período</button>
+                    </div>
+
+                    <div id="incluirFiltroMes" class="filtro-painel ativa">
+                        <select id="incluirMesRapido" class="mes-rapido" onchange="aplicarMesRapido('incluir')"></select>
+                    </div>
+
+                    <div id="incluirFiltroPeriodo" class="filtro-painel">
+                        <div class="periodo-campos">
+                            <div class="periodo-campo">
+                                <label for="incluirDataInicio">De</label>
+                                <input type="date" id="incluirDataInicio" onchange="carregarIncluirEscalas()">
+                            </div>
+                            <div class="periodo-campo">
+                                <label for="incluirDataFim">Até</label>
+                                <input type="date" id="incluirDataFim" onchange="carregarIncluirEscalas()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="mostrar-passadas">
+                        <input type="checkbox" id="incluirMostrarPassadas" onchange="alternarPassadas('incluir')">
+                        Mostrar também escalas passadas
+                    </label>
+                </div>
+
+                <div id="incluirListaContainer"><div class="loading">Carregando...</div></div>
+
+                <div class="salvar-incluir-container">
+                    <button class="btn btn-largo" onclick="salvarIncluirEscalas()" id="btnSalvarIncluir">
+                        <i class="fa-solid fa-floppy-disk"></i> Salvar Alterações
+                    </button>
+                    <div id="incluirStatus" class="status-msg"></div>
+                </div>
+            </div>
+
+            <!-- ===== Aba: Usuários ===== -->
+            <div id="abaUsuarios" class="aba-conteudo">
+                <div id="usuariosContainer"><div class="loading">Carregando...</div></div>
+
+                <div class="form-usuario">
+                    <h3><i class="fa-solid fa-user-plus"></i> Adicionar / Editar Usuário</h3>
+                    <input type="email" id="novoUsuarioEmail" placeholder="email@gmail.com">
+                    <div class="checkbox-deps" id="checkboxDeps"></div>
+                    <button class="btn" onclick="salvarUsuario()">Salvar Usuário</button>
+                    <div id="usuarioStatus" class="status-msg"></div>
+                </div>
+            </div>
+
+            <!-- ===== Aba: Backups ===== -->
+            <div id="abaBackups" class="aba-conteudo">
+                <div class="backup-manual">
+                    <button id="btnBackupManual" class="btn" onclick="fazerBackupManual()"><i class="fa-solid fa-floppy-disk"></i> Fazer backup agora</button>
+                    <div class="backup-manual-dica">Use antes de mexer em arquivos no servidor.</div>
+                </div>
+                <div class="backup-abas">
+                    <button class="backup-aba-btn ativa" data-tipo="alteracao" onclick="mudarAbaBackup('alteracao')">Por alteração</button>
+                    <button class="backup-aba-btn" data-tipo="diario" onclick="mudarAbaBackup('diario')">Diários</button>
+                    <button class="backup-aba-btn" data-tipo="manual" onclick="mudarAbaBackup('manual')">Manuais</button>
+                </div>
+                <div id="backupStatus" class="status-msg"></div>
+                <div id="backupsContainer"><div class="loading">Carregando...</div></div>
+            </div>
+
+            <!-- ===== Aba: Histórico ===== -->
+            <div id="abaHistorico" class="aba-conteudo">
+                <div id="historicoContainer"><div class="loading">Carregando...</div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const DIAS_SEMANA_PT = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+        const MESES_PT = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+        const DEPT_DIAS = {
+            "Direção de Culto": ["Sábado", "Domingo", "Quarta-feira"],
+            "Pregadores": ["Sábado", "Domingo", "Quarta-feira"],
+            "Escola Sabatina": ["Sábado"],
+            "Mensagens Musicais": ["Sábado", "Domingo"],
+            "Louvores": ["Sábado", "Domingo", "Quarta-feira"],
+            "Sonoplastia": ["Sábado", "Domingo", "Quarta-feira"],
+            "Provai e Vede": ["Sábado"],
+            "Ancionato": ["Sábado", "Domingo", "Quarta-feira"],
+            "Adoração Infantil": ["Sábado"]
+        };
+
+        const TODOS_DEPARTAMENTOS = Object.keys(DEPT_DIAS);
+
+        let escalaData = {};
+        let usuariosAtuais = {};
+
+        function formatarDataJS(d) {
+            return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+        }
+        function dataAbreviada(dateStr) {
+            const p = dateStr.split('/');
+            return `${p[0]}/${p[1]}/${p[2].slice(2)}`;
+        }
+        // Converte uma data no formato DD/MM/AAAA (como usado em escalaData) em objeto Date
+        function parseDate(dateStr) {
+            const p = dateStr.split('/');
+            return new Date(Number(p[2]), Number(p[1]) - 1, Number(p[0]));
+        }
+        function formatarParaInputDate(d) {
+            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+        }
+        function parseInputDate(valor) {
+            const [y, m, d] = valor.split('-').map(Number);
+            return new Date(y, m - 1, d);
+        }
+        function formatarDataHora(isoStr) {
+            const d = new Date(isoStr);
+            return d.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' });
+        }
+
+        // ===== Sessão =====
+        function getToken() { return sessionStorage.getItem('admin_token'); }
+        function salvarSessao(dados) {
+            sessionStorage.setItem('admin_token', dados.token);
+            sessionStorage.setItem('admin_email', dados.email);
+        }
+        function limparSessao() {
+            sessionStorage.removeItem('admin_token');
+            sessionStorage.removeItem('admin_email');
+        }
+        function sair() {
+            limparSessao();
+            if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
+            location.reload();
+        }
+
+        // ===== Login com Google =====
+        // Se api/config.php tiver o google_client_id, troca o login de teste
+        // pelo botão do Google. Senão, continua o login de teste.
+        async function prepararLogin() {
+            try {
+                const resposta = await fetch('api/login-google.php', { cache: 'no-store' });
+                const cfg = await resposta.json();
+                if (!cfg.client_id) return;
+
+                document.getElementById('loginTeste').style.display = 'none';
+                document.getElementById('loginGoogle').style.display = 'block';
+
+                const script = document.createElement('script');
+                script.src = 'https://accounts.google.com/gsi/client';
+                script.async = true;
+                script.onload = () => {
+                    google.accounts.id.initialize({ client_id: cfg.client_id, callback: loginComGoogle });
+                    google.accounts.id.renderButton(document.getElementById('googleBotao'), {
+                        theme: 'outline', size: 'large', text: 'signin_with', locale: 'pt-BR'
+                    });
+                };
+                script.onerror = () => {
+                    document.getElementById('loginErro').textContent = 'Não foi possível carregar o login do Google.';
+                };
+                document.head.appendChild(script);
+            } catch (erro) {
+                console.error(erro);
+            }
+        }
+
+        async function loginComGoogle(respostaGoogle) {
+            const erroDiv = document.getElementById('loginErro');
+            erroDiv.textContent = '';
+
+            try {
+                const resposta = await fetch('api/login-google.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ credential: respostaGoogle.credential })
+                });
+                const dados = await resposta.json();
+
+                if (!resposta.ok || !dados.sucesso) {
+                    erroDiv.textContent = dados.erro || 'E-mail não autorizado.';
+                    return;
+                }
+
+                if (!dados.departamentos.includes('*')) {
+                    erroDiv.textContent = 'Este e-mail não tem acesso de administrador.';
+                    return;
+                }
+
+                salvarSessao(dados);
+                iniciarPainel(dados.email);
+            } catch (erro) {
+                erroDiv.textContent = 'Erro de conexão. Tente novamente.';
+                console.error(erro);
+            }
+        }
+
+
+        // ===== Login =====
+        async function fazerLogin() {
+            const email = document.getElementById('emailInput').value.trim().toLowerCase();
+            const erroDiv = document.getElementById('loginErro');
+            erroDiv.textContent = '';
+            if (!email) { erroDiv.textContent = 'Digite um e-mail.'; return; }
+
+            try {
+                const resposta = await fetch('api/login-teste.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const dados = await resposta.json();
+
+                if (!resposta.ok || !dados.sucesso) {
+                    erroDiv.textContent = dados.erro || 'E-mail não autorizado.';
+                    return;
+                }
+
+                if (!dados.departamentos.includes('*')) {
+                    erroDiv.textContent = 'Este e-mail não tem acesso de administrador.';
+                    return;
+                }
+
+                salvarSessao(dados);
+                iniciarPainel(dados.email);
+            } catch (erro) {
+                erroDiv.textContent = 'Erro de conexão. Tente novamente.';
+                console.error(erro);
+            }
+        }
+
+        function iniciarPainel(email) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('painel').style.display = 'block';
+            document.getElementById('usuarioEmail').textContent = email;
+
+            const selectIncluir = document.getElementById('incluirDeptSelect');
+            selectIncluir.innerHTML = '';
+            TODOS_DEPARTAMENTOS.forEach(dep => {
+                const option = document.createElement('option');
+                option.value = dep;
+                option.textContent = dep;
+                selectIncluir.appendChild(option);
+            });
+
+            ['incluir', 'geral'].forEach(px => {
+                popularMesRapido(px, false);
+                aplicarMesRapido(px, false);
+            });
+            carregarVisaoGeral();
+        }
+
+        // ===== Filtros por mês / por período (prefixo: 'incluir' ou 'geral') =====
+        const RECARREGAR_FILTRO = {
+            incluir: () => carregarIncluirEscalas(),
+            geral: () => carregarVisaoGeral(),
+        };
+
+        // Preenche o seletor de mês: do mês atual até 12 meses à frente.
+        // Com "mostrar passadas" ligado, inclui também os 12 meses anteriores.
+        function popularMesRapido(px, manter) {
+            const select = document.getElementById(px + 'MesRapido');
+            const passadas = document.getElementById(px + 'MostrarPassadas').checked;
+            const hoje = new Date();
+            const valorAnterior = manter ? select.value : '';
+            select.innerHTML = '';
+            for (let i = passadas ? -12 : 0; i < 12; i++) {
+                const d = new Date(hoje.getFullYear(), hoje.getMonth() + i, 1);
+                const option = document.createElement('option');
+                option.value = `${d.getFullYear()}-${d.getMonth()}`;
+                option.textContent = `${MESES_PT[d.getMonth()]} de ${d.getFullYear()}`;
+                select.appendChild(option);
+            }
+            const atual = `${hoje.getFullYear()}-${hoje.getMonth()}`;
+            const existe = [...select.options].some(o => o.value === valorAnterior);
+            select.value = existe ? valorAnterior : atual;
+        }
+
+        // Preenche De/Até com o mês escolhido (mês inteiro)
+        function aplicarMesRapido(px, recarregar = true) {
+            const select = document.getElementById(px + 'MesRapido');
+            if (!select.value) return;
+
+            const [ano, mes] = select.value.split('-').map(Number);
+            document.getElementById(px + 'DataInicio').value = formatarParaInputDate(new Date(ano, mes, 1));
+            document.getElementById(px + 'DataFim').value = formatarParaInputDate(new Date(ano, mes + 1, 0));
+
+            if (recarregar) RECARREGAR_FILTRO[px]();
+        }
+
+        function definirModoFiltro(px, modo) {
+            document.querySelectorAll(`#${px}Filtro .filtro-aba-btn`).forEach(b => b.classList.toggle('ativa', b.dataset.filtro === modo));
+            document.getElementById(px + 'FiltroMes').classList.toggle('ativa', modo === 'mes');
+            document.getElementById(px + 'FiltroPeriodo').classList.toggle('ativa', modo === 'periodo');
+        }
+
+        function modoFiltro(px) {
+            return document.getElementById(px + 'FiltroMes').classList.contains('ativa') ? 'mes' : 'periodo';
+        }
+
+        // Alterna entre as abas internas "Por mês" e "Por período"
+        function mudarFiltro(px, modo) {
+            definirModoFiltro(px, modo);
+            if (modo === 'mes') aplicarMesRapido(px, false);
+            RECARREGAR_FILTRO[px]();
+        }
+
+        function alternarPassadas(px) {
+            popularMesRapido(px, true);
+            if (modoFiltro(px) === 'mes') aplicarMesRapido(px, false);
+            RECARREGAR_FILTRO[px]();
+        }
+
+        // Visão Geral -> clique num departamento leva à aba Incluir Escalas,
+        // levando junto o mesmo filtro (mês ou período) que estava na Visão Geral.
+        function irParaIncluir(dept) {
+            document.getElementById('incluirDeptSelect').value = dept;
+            document.getElementById('incluirMostrarPassadas').checked = document.getElementById('geralMostrarPassadas').checked;
+            popularMesRapido('incluir', false);
+
+            const mesGeral = document.getElementById('geralMesRapido').value;
+            const temMes = [...document.getElementById('incluirMesRapido').options].some(o => o.value === mesGeral);
+            if (modoFiltro('geral') === 'mes' && temMes) {
+                document.getElementById('incluirMesRapido').value = mesGeral;
+                definirModoFiltro('incluir', 'mes');
+                aplicarMesRapido('incluir', false);
+            } else {
+                definirModoFiltro('incluir', 'periodo');
+                document.getElementById('incluirDataInicio').value = document.getElementById('geralDataInicio').value;
+                document.getElementById('incluirDataFim').value = document.getElementById('geralDataFim').value;
+            }
+            mudarAba('incluir');
+        }
+
+        function mudarAba(aba) {
+            document.querySelectorAll('.aba-btn').forEach(b => b.classList.toggle('ativa', b.dataset.aba === aba));
+            document.querySelectorAll('.aba-conteudo').forEach(c => c.classList.remove('ativa'));
+            document.getElementById('aba' + aba.charAt(0).toUpperCase() + aba.slice(1)).classList.add('ativa');
+
+            if (aba === 'incluir') carregarIncluirEscalas();
+            if (aba === 'usuarios') carregarUsuarios();
+            if (aba === 'backups') carregarBackups();
+            if (aba === 'historico') carregarHistorico();
+        }
+
+        // ===== Chamada auxiliar com token =====
+        async function chamarAPI(endpoint, corpoExtra = {}) {
+            const resposta = await fetch(`api/${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: getToken(), ...corpoExtra })
+            });
+            let dados;
+            try {
+                dados = await resposta.json();
+            } catch (e) {
+                dados = { erro: `Resposta inválida do servidor (HTTP ${resposta.status}).` };
+            }
+            if (resposta.status === 401) {
+                limparSessao();
+                location.reload();
+            }
+            return { ok: resposta.ok, dados };
+        }
+
+        // ===== Aba: Visão Geral =====
+        async function carregarVisaoGeral() {
+            const container = document.getElementById('resumoContainer');
+            container.innerHTML = '<div class="loading">Carregando...</div>';
+
+            const inputInicio = document.getElementById('geralDataInicio');
+            const inputFim = document.getElementById('geralDataFim');
+            const hoje = new Date();
+            hoje.setHours(0,0,0,0);
+
+            if (!inputInicio.value) inputInicio.value = formatarParaInputDate(hoje);
+            if (!inputFim.value) {
+                const padrao = new Date(hoje);
+                padrao.setDate(padrao.getDate() + 30);
+                inputFim.value = formatarParaInputDate(padrao);
+            }
+
+            // Por padrão considera só datas futuras (hoje em diante)
+            const mostrarPassadas = document.getElementById('geralMostrarPassadas').checked;
+            let inicio = parseInputDate(inputInicio.value);
+            const fim = parseInputDate(inputFim.value);
+            if (!mostrarPassadas && inicio < hoje) inicio = new Date(hoje);
+
+            try {
+                const resposta = await fetch('api/escalas.php', { cache: 'no-store' });
+                const dados = await resposta.json();
+                escalaData = dados.escalaData || {};
+            } catch (erro) {
+                container.innerHTML = '<div class="loading">Erro ao carregar escalas.</div>';
+                return;
+            }
+
+            const calendario = [];
+            const cursor = new Date(inicio);
+            while (cursor <= fim) {
+                const diaSemana = DIAS_SEMANA_PT[cursor.getDay()];
+                if (["Quarta-feira","Sábado","Domingo"].includes(diaSemana)) {
+                    calendario.push({ date: formatarDataJS(cursor), dia: diaSemana });
+                }
+                cursor.setDate(cursor.getDate() + 1);
+            }
+
+            container.innerHTML = '';
+            TODOS_DEPARTAMENTOS.forEach(dept => {
+                const diasValidos = DEPT_DIAS[dept];
+                const faltando = calendario.filter(c => diasValidos.includes(c.dia)).filter(c => {
+                    const entry = escalaData[c.date] && escalaData[c.date][dept];
+                    return entry === undefined || entry === null || entry === '';
+                });
+
+                const card = document.createElement('div');
+                card.className = 'resumo-card clicavel' + (faltando.length > 0 ? ' tem-pendencia' : '');
+                card.title = 'Abrir em Incluir Escalas';
+                card.onclick = () => irParaIncluir(dept);
+                card.innerHTML = `<span class="nome-dept">${dept}</span>` +
+                    (faltando.length > 0
+                        ? `<span class="badge-pendencia">${faltando.length} pendente${faltando.length > 1 ? 's' : ''}</span>`
+                        : `<span class="badge-ok">Completo</span>`);
+                container.appendChild(card);
+            });
+        }
+
+        // ===== Aba: Incluir Escalas =====
+        async function carregarIncluirEscalas() {
+            const dept = document.getElementById('incluirDeptSelect').value;
+            const container = document.getElementById('incluirListaContainer');
+            container.innerHTML = '<div class="loading">Carregando...</div>';
+            document.getElementById('incluirStatus').textContent = '';
+
+            const inputInicio = document.getElementById('incluirDataInicio');
+            const inputFim = document.getElementById('incluirDataFim');
+            const hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+
+            if (!inputInicio.value) inputInicio.value = formatarParaInputDate(hoje);
+            if (!inputFim.value) {
+                const padrao = new Date(hoje);
+                padrao.setDate(padrao.getDate() + 60);
+                inputFim.value = formatarParaInputDate(padrao);
+            }
+
+            // Por padrão mostra só datas futuras (hoje em diante); passadas só se pedido
+            const mostrarPassadas = document.getElementById('incluirMostrarPassadas').checked;
+            let inicio = parseInputDate(inputInicio.value);
+            const fim = parseInputDate(inputFim.value);
+            if (!mostrarPassadas && inicio < hoje) inicio = new Date(hoje);
+
+            if (fim < inicio) {
+                container.innerHTML = '<div class="loading">A data final precisa ser igual ou posterior à data inicial.</div>';
+                return;
+            }
+
+            let escalaAtual = {};
+            try {
+                const resposta = await fetch('api/escalas.php', { cache: 'no-store' });
+                const dados = await resposta.json();
+                escalaAtual = dados.escalaData || {};
+            } catch (erro) {
+                container.innerHTML = '<div class="loading">Erro ao carregar dados atuais.</div>';
+                return;
+            }
+
+            const diasValidos = DEPT_DIAS[dept] || ["Sábado", "Domingo", "Quarta-feira"];
+            const datas = [];
+            const cursor = new Date(inicio);
+            while (cursor <= fim) {
+                const diaSemana = DIAS_SEMANA_PT[cursor.getDay()];
+                if (diasValidos.includes(diaSemana)) {
+                    datas.push({ date: formatarDataJS(cursor), dia: diaSemana });
+                }
+                cursor.setDate(cursor.getDate() + 1);
+            }
+
+            container.innerHTML = '';
+
+            if (datas.length === 0) {
+                container.innerHTML = '<div class="loading">Nenhuma data neste período.</div>';
+                return;
+            }
+
+            let mesAtual = null;
+
+            datas.forEach(({ date, dia }) => {
+                const dataObj = parseDate(date);
+                const mesChave = `${dataObj.getFullYear()}-${dataObj.getMonth()}`;
+                if (mesChave !== mesAtual) {
+                    mesAtual = mesChave;
+                    const mesHeader = document.createElement('div');
+                    mesHeader.className = 'incluir-month-header';
+                    mesHeader.textContent = `${MESES_PT[dataObj.getMonth()]} de ${dataObj.getFullYear()}`;
+                    container.appendChild(mesHeader);
+                }
+
+                const valorAtual = (escalaAtual[date] && escalaAtual[date][dept]) || null;
+
+                const card = document.createElement('div');
+                card.className = 'incluir-card';
+                card.dataset.date = date;
+
+                const label = document.createElement('div');
+                label.className = 'incluir-data-label';
+                label.innerHTML = `${dataAbreviada(date)} <span class="dia-semana">(${dia})</span>`;
+                card.appendChild(label);
+
+                if (dept === 'Provai e Vede') {
+                    const nomeAtual = (valorAtual && typeof valorAtual === 'object') ? (valorAtual.nome || '') : '';
+                    const linkAtual = (valorAtual && typeof valorAtual === 'object') ? (valorAtual.link || '') : '';
+
+                    const campoNome = document.createElement('div');
+                    campoNome.className = 'incluir-campo-provai';
+                    campoNome.innerHTML = `<label>Nome do episódio</label>`;
+                    const wrapperNome = criarCampoIncluir('campo-nome', nomeAtual, 'Nome do episódio', date);
+                    campoNome.appendChild(wrapperNome);
+                    card.appendChild(campoNome);
+
+                    const campoLink = document.createElement('div');
+                    campoLink.className = 'incluir-campo-provai';
+                    campoLink.innerHTML = `<label>Link do vídeo</label>`;
+                    const wrapperLink = criarCampoIncluir('campo-link', linkAtual, 'https://...', date);
+                    campoLink.appendChild(wrapperLink);
+                    card.appendChild(campoLink);
+                } else {
+                    const wrapper = criarCampoIncluir('campo-valor', valorAtual || '', 'Nome / escala', date);
+                    card.appendChild(wrapper);
+                }
+
+                travarSeTemValor(card);
+                container.appendChild(card);
+            });
+        }
+
+        // Cria a caixinha de input com o visual vermelho (vazio, "?") / verde (preenchido, check)
+        // e o botão de salvar só aquela data.
+        function criarCampoIncluir(classeInput, valorInicial, placeholder, date) {
+            const wrapper = document.createElement('div');
+            const vazio = !valorInicial;
+            wrapper.className = 'incluir-input-wrapper ' + (vazio ? 'vazio' : 'preenchido');
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = classeInput;
+            input.placeholder = placeholder;
+            input.value = valorInicial;
+            input.addEventListener('input', () => atualizarStatusCampoIncluir(wrapper, input));
+
+            const icone = document.createElement('i');
+            icone.className = 'incluir-status-icon fa-solid ' + (vazio ? 'fa-question' : 'fa-check');
+            icone.title = vazio ? 'Escala pendente' : 'Escala informada';
+
+            const btnSalvar = document.createElement('button');
+            btnSalvar.type = 'button';
+            btnSalvar.className = 'incluir-btn-salvar-individual';
+            btnSalvar.title = 'Salvar informação';
+            btnSalvar.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+            btnSalvar.onclick = () => acaoBotaoCaixa(btnSalvar, date);
+
+            wrapper.appendChild(input);
+            wrapper.appendChild(icone);
+            wrapper.appendChild(btnSalvar);
+            return wrapper;
+        }
+
+        // Caixa de Entrada salva: trava o campo (texto cinza escuro) e troca o botão por "Editar"
+        function travarCard(card) {
+            card.querySelectorAll('.incluir-input-wrapper').forEach(w => {
+                w.classList.add('salvo');
+                w.querySelector('input[type="text"]').readOnly = true;
+                const b = w.querySelector('.incluir-btn-salvar-individual');
+                b.classList.add('modo-editar');
+                b.title = 'Editar informação';
+                b.innerHTML = '<i class="fa-solid fa-pen"></i>';
+            });
+        }
+
+        // Libera a edição: campo volta a aceitar texto e o botão volta a ser "Salvar"
+        function destravarCard(card) {
+            card.querySelectorAll('.incluir-input-wrapper').forEach(w => {
+                w.classList.remove('salvo');
+                w.querySelector('input[type="text"]').readOnly = false;
+                const b = w.querySelector('.incluir-btn-salvar-individual');
+                b.classList.remove('modo-editar');
+                b.title = 'Salvar informação';
+                b.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+            });
+            const primeiro = card.querySelector('input[type="text"]');
+            if (primeiro) primeiro.focus();
+        }
+
+        // Trava o card só se houver alguma informação (card vazio continua editável)
+        function travarSeTemValor(card) {
+            const temValor = [...card.querySelectorAll('input[type="text"]')].some(i => i.value.trim() !== '');
+            if (temValor) travarCard(card);
+        }
+
+        // Botão da Caixa de Entrada: "Editar" se já está salva, "Salvar" se não
+        function acaoBotaoCaixa(btn, date) {
+            const card = btn.closest('.incluir-card');
+            if (card.querySelector('.incluir-input-wrapper.salvo')) destravarCard(card);
+            else salvarCampoIndividual(date, btn);
+        }
+
+        function atualizarStatusCampoIncluir(wrapper, input) {
+            const vazio = input.value.trim() === '';
+            wrapper.classList.toggle('vazio', vazio);
+            wrapper.classList.toggle('preenchido', !vazio);
+            const icone = wrapper.querySelector('.incluir-status-icon');
+            icone.classList.toggle('fa-question', vazio);
+            icone.classList.toggle('fa-check', !vazio);
+            icone.title = vazio ? 'Escala pendente' : 'Escala informada';
+        }
+
+        // Salva só a data referente ao botãozinho clicado, sem mexer nas outras
+        async function salvarCampoIndividual(date, btnSalvar) {
+            const dept = document.getElementById('incluirDeptSelect').value;
+            const card = document.querySelector(`.incluir-card[data-date="${date}"]`);
+            if (!card) return;
+
+            let valor;
+            if (dept === 'Provai e Vede') {
+                const nome = card.querySelector('.campo-nome').value.trim();
+                const link = card.querySelector('.campo-link').value.trim();
+                valor = (nome || link) ? { nome, link } : '';
+            } else {
+                valor = card.querySelector('.campo-valor').value.trim();
+            }
+
+            const iconeOriginal = btnSalvar.innerHTML;
+            btnSalvar.disabled = true;
+            btnSalvar.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+            const statusDiv = document.getElementById('incluirStatus');
+            statusDiv.className = 'status-msg';
+
+            try {
+                const { ok, dados } = await chamarAPI('salvar-departamento.php', {
+                    departamento: dept,
+                    atualizacoes: { [date]: valor }
+                });
+
+                if (!ok || !dados.sucesso) {
+                    statusDiv.textContent = dados.erro || `Erro ao salvar ${dataAbreviada(date)}.`;
+                    statusDiv.classList.add('erro');
+                    btnSalvar.innerHTML = iconeOriginal;
+                } else {
+                    statusDiv.textContent = `${dataAbreviada(date)} salva com sucesso!`;
+                    statusDiv.classList.add('sucesso');
+                    // Salvo: trava a Caixa de Entrada e o botão vira "Editar"
+                    travarSeTemValor(card);
+                }
+            } catch (erro) {
+                console.error(erro);
+                statusDiv.textContent = `Erro de conexão ao salvar ${dataAbreviada(date)}. Verifique sua internet e tente novamente.`;
+                statusDiv.classList.add('erro');
+                btnSalvar.innerHTML = iconeOriginal;
+            } finally {
+                btnSalvar.disabled = false;
+            }
+        }
+
+        async function salvarIncluirEscalas() {
+            const dept = document.getElementById('incluirDeptSelect').value;
+            const btn = document.getElementById('btnSalvarIncluir');
+            const statusDiv = document.getElementById('incluirStatus');
+            statusDiv.textContent = '';
+            statusDiv.className = 'status-msg';
+
+            const cards = document.querySelectorAll('#incluirListaContainer .incluir-card');
+            const atualizacoes = {};
+
+            cards.forEach(card => {
+                const date = card.dataset.date;
+                if (dept === 'Provai e Vede') {
+                    const nome = card.querySelector('.campo-nome').value.trim();
+                    const link = card.querySelector('.campo-link').value.trim();
+                    atualizacoes[date] = (nome || link) ? { nome, link } : '';
+                } else {
+                    atualizacoes[date] = card.querySelector('.campo-valor').value.trim();
+                }
+            });
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+
+            try {
+                const { ok, dados } = await chamarAPI('salvar-departamento.php', { departamento: dept, atualizacoes });
+
+                if (!ok || !dados.sucesso) {
+                    statusDiv.textContent = dados.erro || 'Erro ao salvar.';
+                    statusDiv.classList.add('erro');
+                } else {
+                    statusDiv.textContent = 'Escalas salvas com sucesso!';
+                    statusDiv.classList.add('sucesso');
+                    cards.forEach(travarSeTemValor);
+                }
+            } catch (erro) {
+                console.error(erro);
+                statusDiv.textContent = 'Erro de conexão ao salvar. Verifique sua internet e tente novamente.';
+                statusDiv.classList.add('erro');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Salvar Alterações';
+            }
+        }
+
+        // ===== Aba: Usuários =====
+        async function carregarUsuarios() {
+            const container = document.getElementById('usuariosContainer');
+            container.innerHTML = '<div class="loading">Carregando...</div>';
+
+            const { ok, dados } = await chamarAPI('usuarios-listar.php');
+            if (!ok || !dados.sucesso) {
+                container.innerHTML = `<div class="loading">${dados.erro || 'Erro ao carregar usuários.'}</div>`;
+                return;
+            }
+
+            usuariosAtuais = dados.usuarios;
+            container.innerHTML = '';
+
+            Object.entries(usuariosAtuais).forEach(([email, deps]) => {
+                const card = document.createElement('div');
+                card.className = 'usuario-card';
+
+                const chips = deps.includes('*')
+                    ? '<span class="chip-dept admin">Administrador (todos)</span>'
+                    : deps.map(d => `<span class="chip-dept">${d}</span>`).join('');
+
+                card.innerHTML = `
+                    <div class="email">${email}</div>
+                    <div>${chips}</div>
+                    <div class="usuario-acoes">
+                        <button class="btn btn-pequeno" onclick="editarUsuario('${email}')">Editar</button>
+                        <button class="btn btn-perigo btn-pequeno" onclick="removerUsuario('${email}')">Remover</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            montarCheckboxDeps();
+        }
+
+        function montarCheckboxDeps() {
+            const container = document.getElementById('checkboxDeps');
+            container.innerHTML = `
+                <label><input type="checkbox" value="*" id="checkAdmin"> <strong>Administrador (todos os departamentos)</strong></label>
+            `;
+            TODOS_DEPARTAMENTOS.forEach(dept => {
+                const id = 'check_' + dept.replace(/\s+/g, '_');
+                container.innerHTML += `<label><input type="checkbox" value="${dept}" class="check-dept" id="${id}"> ${dept}</label>`;
+            });
+
+            document.getElementById('checkAdmin').addEventListener('change', function() {
+                document.querySelectorAll('.check-dept').forEach(cb => {
+                    cb.disabled = this.checked;
+                    if (this.checked) cb.checked = false;
+                });
+            });
+        }
+
+        function editarUsuario(email) {
+            document.getElementById('novoUsuarioEmail').value = email;
+            const deps = usuariosAtuais[email] || [];
+            document.getElementById('checkAdmin').checked = deps.includes('*');
+            document.querySelectorAll('.check-dept').forEach(cb => {
+                cb.checked = deps.includes(cb.value);
+                cb.disabled = deps.includes('*');
+            });
+            document.getElementById('novoUsuarioEmail').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function salvarUsuario() {
+            const email = document.getElementById('novoUsuarioEmail').value.trim().toLowerCase();
+            const statusDiv = document.getElementById('usuarioStatus');
+            statusDiv.textContent = '';
+            statusDiv.className = 'status-msg';
+
+            if (!email) { statusDiv.textContent = 'Digite um e-mail.'; statusDiv.classList.add('erro'); return; }
+
+            const isAdmin = document.getElementById('checkAdmin').checked;
+            const departamentos = isAdmin
+                ? ['*']
+                : Array.from(document.querySelectorAll('.check-dept:checked')).map(cb => cb.value);
+
+            if (departamentos.length === 0) {
+                statusDiv.textContent = 'Selecione ao menos um departamento.';
+                statusDiv.classList.add('erro');
+                return;
+            }
+
+            const { ok, dados } = await chamarAPI('usuarios-salvar.php', { acao: 'salvar', email, departamentos });
+
+            if (!ok || !dados.sucesso) {
+                statusDiv.textContent = dados.erro || 'Erro ao salvar.';
+                statusDiv.classList.add('erro');
+                return;
+            }
+
+            statusDiv.textContent = 'Usuário salvo com sucesso!';
+            statusDiv.classList.add('sucesso');
+            document.getElementById('novoUsuarioEmail').value = '';
+            document.getElementById('checkAdmin').checked = false;
+            document.querySelectorAll('.check-dept').forEach(cb => { cb.checked = false; cb.disabled = false; });
+            carregarUsuarios();
+        }
+
+        async function removerUsuario(email) {
+            if (!confirm(`Remover o acesso de ${email}?`)) return;
+
+            const { ok, dados } = await chamarAPI('usuarios-salvar.php', { acao: 'remover', email });
+            const statusDiv = document.getElementById('usuarioStatus');
+
+            if (!ok || !dados.sucesso) {
+                statusDiv.textContent = dados.erro || 'Erro ao remover.';
+                statusDiv.className = 'status-msg erro';
+                return;
+            }
+
+            statusDiv.textContent = 'Usuário removido.';
+            statusDiv.className = 'status-msg sucesso';
+            carregarUsuarios();
+        }
+
+        // ===== Aba: Backups =====
+        async function carregarBackups() {
+            const container = document.getElementById('backupsContainer');
+            container.innerHTML = '<div class="loading">Carregando...</div>';
+
+            const { ok, dados } = await chamarAPI('backups-listar.php');
+            if (!ok || !dados.sucesso) {
+                container.innerHTML = `<div class="loading">${dados.erro || 'Erro ao carregar backups.'}</div>`;
+                return;
+            }
+
+            backupsCarregados = dados.backups;
+            mostrarBackups();
+        }
+
+        // ===== Abas por tipo de backup =====
+        let backupsCarregados = [];
+        let abaBackupAtual = 'alteracao';
+
+        const ABAS_BACKUP = {
+            alteracao: 'Feitos automaticamente antes de cada alteração pelo site. Guardam como a escala estava antes da mudança. Ficam os 30 últimos.',
+            diario: 'Feitos automaticamente uma vez por dia, no primeiro acesso à escala. Ficam os 60 últimos.',
+            manual: 'Feitos pelo botão "Fazer backup agora". Ficam os 30 últimos.',
+        };
+
+        const ACOES_BACKUP = {
+            'salvar_departamento': 'alterou',
+            'salvar_completo': 'atualização completa',
+            'restaurar_backup': 'restaurou um backup',
+        };
+
+        function mudarAbaBackup(tipo) {
+            abaBackupAtual = tipo;
+            document.querySelectorAll('.backup-aba-btn').forEach(b => b.classList.toggle('ativa', b.dataset.tipo === tipo));
+            mostrarBackups();
+        }
+
+        function textoResponsavel(r) {
+            if (!r) return 'Responsável não encontrado no Histórico';
+            let texto = `${r.ator} ${ACOES_BACKUP[r.acao] || ''}`.trim();
+            if (r.departamento) texto += ` ${r.departamento}`;
+            return texto;
+        }
+
+        function mostrarBackups() {
+            const container = document.getElementById('backupsContainer');
+            container.innerHTML = '';
+
+            document.querySelectorAll('.backup-aba-btn').forEach(btn => {
+                const qtd = backupsCarregados.filter(b => (b.tipo || 'alteracao') === btn.dataset.tipo).length;
+                btn.textContent = `${btn.textContent.replace(/ \(\d+\)$/, '')} (${qtd})`;
+            });
+
+            const dica = document.createElement('div');
+            dica.className = 'backup-aba-dica';
+            dica.textContent = ABAS_BACKUP[abaBackupAtual];
+            container.appendChild(dica);
+
+            const daAba = backupsCarregados.filter(b => (b.tipo || 'alteracao') === abaBackupAtual);
+            if (daAba.length === 0) {
+                container.insertAdjacentHTML('beforeend', '<div class="loading">Nenhum backup deste tipo ainda.</div>');
+                return;
+            }
+
+            daAba.forEach(b => {
+                const card = document.createElement('div');
+                card.className = 'backup-card';
+                const kb = (b.tamanho / 1024).toFixed(1);
+                const info = document.createElement('div');
+                info.className = 'backup-info';
+                info.innerHTML = `<div class="data">${formatarDataHora(b.criado_em)}</div>`;
+                if (abaBackupAtual === 'alteracao') {
+                    const resp = document.createElement('div');
+                    resp.className = 'responsavel';
+                    resp.textContent = textoResponsavel(b.responsavel);
+                    info.appendChild(resp);
+                }
+                info.insertAdjacentHTML('beforeend', `<div class="tamanho">${kb} KB</div>`);
+                const botao = document.createElement('button');
+                botao.className = 'btn btn-pequeno';
+                botao.textContent = 'Restaurar';
+                botao.onclick = () => restaurarBackup(b.arquivo);
+                card.appendChild(info);
+                card.appendChild(botao);
+                container.appendChild(card);
+            });
+        }
+
+        async function fazerBackupManual() {
+            const botao = document.getElementById('btnBackupManual');
+            const statusDiv = document.getElementById('backupStatus');
+            botao.disabled = true;
+
+            const { ok, dados } = await chamarAPI('backups-criar.php');
+            botao.disabled = false;
+
+            if (!ok || !dados.sucesso) {
+                statusDiv.textContent = dados.erro || 'Erro ao criar o backup.';
+                statusDiv.className = 'status-msg erro';
+                return;
+            }
+
+            statusDiv.textContent = 'Backup criado com sucesso!';
+            statusDiv.className = 'status-msg sucesso';
+            carregarBackups();
+        }
+
+        async function restaurarBackup(arquivo) {
+            if (!confirm(`Restaurar este backup? O estado atual será salvo como um novo backup antes, mas essa ação substitui as escalas atuais.`)) return;
+
+            const { ok, dados } = await chamarAPI('backups-restaurar.php', { arquivo });
+            const statusDiv = document.getElementById('backupStatus');
+
+            if (!ok || !dados.sucesso) {
+                statusDiv.textContent = dados.erro || 'Erro ao restaurar.';
+                statusDiv.className = 'status-msg erro';
+                return;
+            }
+
+            statusDiv.textContent = 'Backup restaurado com sucesso!';
+            statusDiv.className = 'status-msg sucesso';
+            carregarBackups();
+        }
+
+        // ===== Aba: Histórico =====
+        async function carregarHistorico() {
+            const container = document.getElementById('historicoContainer');
+            container.innerHTML = '<div class="loading">Carregando...</div>';
+
+            const { ok, dados } = await chamarAPI('log-listar.php', { quantidade: 100 });
+            if (!ok || !dados.sucesso) {
+                container.innerHTML = `<div class="loading">${dados.erro || 'Erro ao carregar histórico.'}</div>`;
+                return;
+            }
+
+            if (dados.registros.length === 0) {
+                container.innerHTML = '<div class="loading">Nenhum registro ainda.</div>';
+                return;
+            }
+
+            const NOMES_ACAO = {
+                'salvar_completo': 'Atualização completa das escalas',
+                'salvar_departamento': 'Escala de departamento atualizada',
+                'restaurar_backup': 'Backup restaurado',
+                'backup_manual': 'Backup manual criado',
+                'criar_usuario': 'Usuário criado',
+                'editar_usuario': 'Usuário editado',
+                'remover_usuario': 'Usuário removido',
+            };
+
+            container.innerHTML = '';
+            dados.registros.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'log-card';
+
+                let detalhesTxt = '';
+                if (r.detalhes && r.detalhes.departamento) detalhesTxt += `Departamento: ${r.detalhes.departamento}. `;
+                if (r.detalhes && r.detalhes.email_alvo) detalhesTxt += `Usuário: ${r.detalhes.email_alvo}. `;
+                if (r.detalhes && r.detalhes.arquivo_restaurado) detalhesTxt += `Arquivo: ${r.detalhes.arquivo_restaurado}. `;
+                if (r.detalhes && r.detalhes.arquivo_backup) detalhesTxt += `Arquivo: ${r.detalhes.arquivo_backup}. `;
+                if (r.detalhes && r.detalhes.datas) detalhesTxt += `${r.detalhes.datas.length} data(s) alteradas.`;
+
+                card.innerHTML = `
+                    <div class="log-topo">
+                        <span>${r.ator}</span>
+                        <span>${formatarDataHora(r.data)}</span>
+                    </div>
+                    <div class="log-acao">${NOMES_ACAO[r.acao] || r.acao}</div>
+                    ${detalhesTxt ? `<div class="log-detalhes">${detalhesTxt}</div>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ===== Inicialização =====
+        window.onload = function() {
+            const token = getToken();
+            const email = sessionStorage.getItem('admin_email');
+            if (token && email) {
+                iniciarPainel(email);
+            } else {
+                prepararLogin();
+            }
+        };
+    </script>
+</body>
+</html>

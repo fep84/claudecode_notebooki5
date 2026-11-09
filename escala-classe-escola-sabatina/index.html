@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes da Escola Sabatina - IASD Glória</title>
+    <meta name="description" content="Escalas de professores das classes da Escola Sabatina da IASD Glória, Blumenau/SC.">
+    <link rel="icon" href="vivendo-o-reino/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --azul: #1B4F8F; --azul-escuro: #123A6B; --azul-claro: #E6EEF8; --dourado: #C9962B; --fundo: #F3F5F8; --branco: #FFFFFF; --texto: #1E293B; --suave: #64748B; --borda: #E2E8F0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.45; }
+        .app { max-width: 720px; margin: 0 auto; background: var(--branco); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,.05); }
+        @media (min-width: 760px) { body { padding: 24px; } .app { min-height: auto; border-radius: 14px; overflow: hidden; } }
+        header { background: linear-gradient(135deg, var(--azul-escuro), var(--azul)); color: #fff; padding: 26px 20px 22px; }
+        header .topo { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+        header h1 { font-family: 'Roboto Slab', serif; font-size: 1.7rem; margin-top: 6px; }
+        main { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .classe { display: grid; grid-template-columns: 52px minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 16px; border: 1px solid var(--borda); border-radius: 12px; text-decoration: none; color: inherit; }
+        .classe:hover, .classe:focus-visible { border-color: var(--azul); outline: none; box-shadow: 0 0 0 2px var(--azul-claro); }
+        .classe .ic { width: 52px; height: 52px; border-radius: 50%; background: var(--azul-claro); color: var(--azul); display: grid; place-items: center; font-size: 1.3rem; }
+        .classe strong { font-family: 'Roboto Slab', serif; font-size: 1.1rem; }
+        .classe small { display: block; color: var(--suave); }
+        .classe .seta { color: var(--suave); }
+        footer { padding: 18px 20px 26px; color: var(--suave); font-size: .8rem; text-align: center; border-top: 1px solid var(--borda); }
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="topo">IASD Glória · Blumenau/SC</div>
+        <h1>Classes da Escola Sabatina</h1>
+    </header>
+    <main>
+        <p style="color:var(--suave)">Escolha a classe para ver a escala de professores e o tema de cada sábado.</p>
+        <!-- Para uma nova classe: copie a pasta vivendo-o-reino com outro nome e acrescente um bloco igual a este -->
+        <a class="classe" href="vivendo-o-reino/">
+            <span class="ic"><i class="fa-solid fa-book-bible"></i></span>
+            <span><strong>Vivendo o Reino</strong><small>Escala de professores</small></span>
+            <i class="fa-solid fa-chevron-right seta"></i>
+        </a>
+    </main>
+    <footer>IASD Glória · Blumenau/SC</footer>
+</div>
+</body>
+</html>

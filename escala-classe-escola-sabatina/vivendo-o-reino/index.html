@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classe Vivendo o Reino - Escola Sabatina - IASD Glória</title>
+    <meta name="description" content="Escala de professores da Classe Vivendo o Reino, Escola Sabatina da IASD Glória, Blumenau/SC.">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul: #1B4F8F;
+            --azul-escuro: #123A6B;
+            --azul-claro: #E6EEF8;
+            --dourado: #C9962B;
+            --dourado-claro: #FBF3E2;
+            --fundo: #F3F5F8;
+            --branco: #FFFFFF;
+            --texto: #1E293B;
+            --suave: #64748B;
+            --borda: #E2E8F0;
+            --verde: #1F9D55;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.45; }
+        .app { max-width: 720px; margin: 0 auto; background: var(--branco); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,.05); }
+        @media (min-width: 760px) { body { padding: 24px; } .app { min-height: auto; border-radius: 14px; overflow: hidden; } }
+
+        header { background: linear-gradient(135deg, var(--azul-escuro), var(--azul)); color: #fff; padding: 26px 20px 22px; }
+        header .topo { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+        header h1 { font-family: 'Roboto Slab', serif; font-size: 1.7rem; margin: 6px 0 4px; }
+        header .sub { font-size: .9rem; opacity: .85; }
+        .quiz { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 11px 20px; border-radius: 99px; background: #FFC93C; color: #1A2B4A; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,.25); transition: transform .15s; }
+        .quiz:hover { transform: translateY(-1px); background: #FFD55E; }
+        .quiz:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+        main { padding: 20px; display: flex; flex-direction: column; gap: 22px; }
+
+        .vazio { color: var(--suave); font-style: italic; }
+
+        .links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .link { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 99px; font-size: .85rem; font-weight: 500;
+                background: var(--branco); color: var(--azul); text-decoration: none; border: 1px solid var(--borda); }
+        .link:hover { border-color: var(--azul); }
+
+        .botoes { display: flex; flex-wrap: wrap; gap: 8px; }
+        .btn { font: inherit; font-size: .9rem; font-weight: 500; border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer;
+               display: inline-flex; align-items: center; gap: 8px; }
+        .btn.wa { background: var(--verde); color: #fff; }
+        .btn.sec { background: var(--branco); color: var(--azul); border: 1px solid var(--borda); }
+        .btn:focus-visible, .link:focus-visible, select:focus-visible { outline: 3px solid var(--dourado); outline-offset: 2px; }
+
+        .secao-topo { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+        h2 { font-family: 'Roboto Slab', serif; font-size: 1.15rem; }
+        select { font: inherit; font-size: .9rem; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--borda); background: var(--branco); color: var(--texto); }
+
+        .lista { display: flex; flex-direction: column; }
+        /* Cartões dos sábados, no mesmo formato da área do responsável */
+        .cards { display: grid; gap: 14px; }
+        @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+        .card { background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+        .card.atual { background: #E8F4FD; border-color: #B3D9F5; }
+        .card .cab { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+        .card .cab strong { font-size: 1rem; }
+        .card .selo { font-size: .75rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; background: #00B7FF; color: #002B45; white-space: nowrap; box-shadow: 0 0 6px rgba(0,183,255,.55); animation: neon 2.4s ease-in-out infinite; }
+        @keyframes neon { 0%, 100% { box-shadow: 0 0 4px rgba(0,183,255,.45); opacity: 1; } 50% { box-shadow: 0 0 14px rgba(0,183,255,.95); opacity: .82; } }
+        @media (prefers-reduced-motion: reduce) { .card .selo { animation: none; } }
+        .card .lic { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--dourado); }
+        .card .t { font-weight: 500; font-size: 1.05rem; overflow-wrap: anywhere; }
+        .card .resp { display: flex; flex-direction: column; gap: 2px; font-size: .9rem; }
+        .card .resp span { color: var(--suave); }
+        .card .resp em { color: var(--suave); font-style: italic; }
+        .card .ler { font-size: .85rem; color: var(--azul); }
+        /* Capa do trimestre como fundo suave da página (troque o arquivo capa-trimestre.jpg a cada trimestre) */
+        body::before { content: ""; position: fixed; inset: 0; z-index: -1;
+            background: linear-gradient(rgba(243,245,248,.55), rgba(243,245,248,.70)), url('capa-trimestre.jpg') center / cover no-repeat;
+            filter: blur(3px) saturate(.8); transform: scale(1.04); }
+        body { background: transparent; }
+        html { background: var(--fundo); }
+        .app { background: rgba(255,255,255,.74); }
+        .ilustra { width: 100%; aspect-ratio: 1102 / 425; object-fit: cover; border-radius: 10px; display: block; background: var(--azul-claro); }
+        .acoes-item { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+        .convite { font: inherit; font-size: .8rem; font-weight: 500; border: 0; border-radius: 99px; padding: 5px 12px; cursor: pointer;
+                   background: var(--verde); color: #fff; display: inline-flex; align-items: center; gap: 6px; }
+        .convite:focus-visible { outline: 3px solid var(--dourado); outline-offset: 2px; }
+        /* Sábados que já passaram: miniaturas em cinza, lado a lado */
+        /* 3 por linha; se sobrar 1 sozinho no fim, ele entra na linha de cima. Cada linha ocupa a largura toda. */
+        .sanfona { margin-bottom: 14px; border: 1px solid var(--borda); border-radius: 12px; background: rgba(248,250,252,.85); }
+        .sanfona summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 11px 14px; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #64748B; }
+        .sanfona summary::-webkit-details-marker { display: none; }
+        .sanfona summary .qtd { font-size: .72rem; letter-spacing: 0; background: #E2E8F0; color: #64748B; border-radius: 99px; padding: 1px 8px; }
+        .sanfona summary .fa-chevron-down { margin-left: auto; transition: transform .2s; }
+        .sanfona[open] summary .fa-chevron-down { transform: rotate(180deg); }
+        .sanfona summary:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; border-radius: 12px; }
+        .passadas { display: flex; flex-direction: column; gap: 8px; padding: 0 10px 10px; }
+        .passadas .linha-p { display: flex; gap: 8px; }
+        .mini-card { flex: 1 1 0; background: rgba(241,245,249,.85); border-radius: 10px; padding: 5px; color: #94A3B8; min-width: 0; }
+        .mini-card img { width: 100%; aspect-ratio: 1102 / 425; object-fit: cover; border-radius: 6px; display: block; filter: grayscale(1); opacity: .55; }
+        .mini-card .md { font-size: .72rem; font-weight: 700; margin-top: 5px; font-variant-numeric: tabular-nums; }
+        .mini-card .mt { font-size: .76rem; line-height: 1.25; overflow-wrap: anywhere; }
+        .mini-card .mp { font-size: .7rem; }
+
+        .fixos { background: var(--fundo); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+        footer { padding: 18px 20px 26px; color: var(--suave); font-size: .8rem; text-align: center; border-top: 1px solid var(--borda); }
+        footer a { color: var(--suave); }
+        .aviso { font-size: .85rem; color: var(--verde); min-height: 1.2em; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="topo">Escola Sabatina · IASD Glória</div>
+        <h1>Classe Vivendo o Reino</h1>
+        <div class="sub">Escala de professores</div>
+        <!-- Botão do quiz da classe: para trocar o endereço, mude o href abaixo -->
+        <a class="quiz" href="https://es.minhaes.org/quizgeral/2/E2F1EA7B-FE4A-4FCC-A83F-D0698F72F4A3" target="_blank" rel="noopener"><i class="fa-solid fa-circle-question"></i> Responda o Quiz</a>
+    </header>
+
+    <main>
+
+        <section>
+            <div class="secao-topo">
+                <h2>Escala do trimestre</h2>
+                <select id="trimestre" aria-label="Escolher trimestre" onchange="trocarTrimestre()"></select>
+            </div>
+            <div class="lista" id="lista"><p class="vazio">Carregando…</p></div>
+        </section>
+
+        <section class="fixos" id="fixos" hidden>
+            <h2 style="text-align:center">Links úteis</h2>
+            <div class="links" id="linksFixos" style="justify-content:center"></div>
+        </section>
+    </main>
+
+    <footer>
+        IASD Glória · Blumenau/SC · <a href="editar.html">Área do responsável</a>
+    </footer>
+</div>
+
+<script>
+    const DIAS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+    const MESES_LONGOS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    let dados = { escalaData: {}, linksFixos: [], professores: {}, classe: 'Vivendo o Reino' };
+    let sabadoDestaque = null;
+    const licoesOficiais = {};   // "2026-04" -> { "07/11/2026": {numero, tema, capa} }
+
+    const chaveTri = d => `${d.getFullYear()}-0${Math.floor(d.getMonth() / 3) + 1}`;
+    async function carregarLicoes(chave) {
+        if (licoesOficiais[chave]) return;
+        try {
+            const r = await fetch('api/licoes.php?trimestre=' + chave);
+            licoesOficiais[chave] = r.ok ? ((await r.json()).licoes || {}) : {};
+        } catch (e) { licoesOficiais[chave] = {}; }
+    }
+    // Aula do sábado: o que o responsável preencheu, completado com a lição oficial
+    function aulaDo(sab) {
+        const data = fmt(sab);
+        const a = dados.escalaData[data];
+        const o = (licoesOficiais[chaveTri(sab)] || {})[data];
+        if (!a && !o) return null;
+        return {
+            professor: a ? a.professor : '',
+            pastoreio: a ? (a.pastoreio || '') : '',
+            licao: (a && a.licao) || (o ? o.numero : ''),
+            tema: (a && a.tema) || (o ? o.tema : ''),
+            links: a ? a.links : [],
+            capa: o ? o.capa : '',
+            link: o ? (o.link || '') : ''
+        };
+    }
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const fmt = d => `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+    const curta = d => `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const parse = s => { const [d, m, a] = s.split('/').map(Number); return new Date(a, m - 1, d); };
+    const iniciais = nome => nome.split(/\s+/).filter(Boolean).map(p => p[0]).slice(0, 2).join('').toUpperCase() || '?';
+    const hoje = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+
+    function proximoSabado() {
+        const d = hoje();
+        d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7));
+        return d;
+    }
+    function sabadosDoTrimestre(ano, tri) {
+        const d = new Date(ano, tri * 3, 1), fim = new Date(ano, tri * 3 + 3, 0), lista = [];
+        d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7));
+        for (; d <= fim; d.setDate(d.getDate() + 7)) lista.push(new Date(d));
+        return lista;
+    }
+    function professor(id) { return dados.professores[id] || null; }
+
+    function linksHTML(links, classe = 'link') {
+        return (links || []).map(l => `<a class="${classe}" href="${esc(l.url)}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${esc(l.titulo)}</a>`).join('');
+    }
+    function tituloAula(aula) {
+        if (!aula) return '';
+        if (aula.licao && aula.tema) return `Lição ${aula.licao}: ${aula.tema}`;
+        if (aula.licao) return `Lição ${aula.licao}`;
+        return aula.tema || '';
+    }
+
+    function marcarSabadoAtual() { sabadoDestaque = proximoSabado(); }
+
+    // Ilustração da lição (recortada da lição impressa)
+    function imagemLicao(aula) {
+        if (!aula || !aula.capa) return '';
+        return `<img class="ilustra" src="${esc(aula.capa)}" alt="Ilustração da lição ${esc(aula.licao)}" loading="lazy" onerror="this.remove()">`;
+    }
+
+    function popularTrimestres() {
+        const sel = document.getElementById('trimestre');
+        const h = hoje(), ano = h.getFullYear(), tri = Math.floor(h.getMonth() / 3);
+        // Trimestre atual, o próximo e qualquer outro que já tenha aulas
+        const chaves = new Set([`${ano}-${tri}`, tri === 3 ? `${ano + 1}-0` : `${ano}-${tri + 1}`]);
+        Object.keys(dados.escalaData).forEach(s => { const d = parse(s); chaves.add(`${d.getFullYear()}-${Math.floor(d.getMonth() / 3)}`); });
+        const ordenadas = [...chaves].sort((a, b) => { const [a1, t1] = a.split('-').map(Number), [a2, t2] = b.split('-').map(Number); return a1 - a2 || t1 - t2; });
+        sel.innerHTML = ordenadas.map(k => { const [a, t] = k.split('-').map(Number); return `<option value="${k}">${t + 1}º trimestre de ${a}</option>`; }).join('');
+        sel.value = `${ano}-${tri}`;
+    }
+
+    function desenharLista() {
+        const [ano, tri] = document.getElementById('trimestre').value.split('-').map(Number);
+        const h = hoje();
+        const todos = sabadosDoTrimestre(ano, tri);
+        const passados = todos.filter(sab => sab < h && sab.getTime() !== sabadoDestaque.getTime());
+        const proximos = todos.filter(sab => !passados.includes(sab));
+        const cards = passados.map(sab => {
+            const aula = aulaDo(sab);
+            const prof = aula ? professor(aula.professor) : null;
+            return `<div class="mini-card">
+                ${aula && aula.capa ? `<img src="${esc(aula.capa)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
+                <div class="md">${curta(sab)}${aula && aula.licao ? ' · Lição ' + esc(aula.licao) : ''}</div>
+                <div class="mt">${aula && aula.tema ? esc(aula.tema) : 'Sem tema'}</div>
+                <div class="mp">${prof ? esc(prof.nome) : '—'}</div>
+            </div>`;
+        });
+        const linhas = [];
+        for (let i = 0; i < cards.length; i += 3) linhas.push(cards.slice(i, i + 3));
+        if (linhas.length > 1 && linhas[linhas.length - 1].length === 1) linhas[linhas.length - 2].push(linhas.pop()[0]);
+        const htmlPassados = linhas.map(l => `<div class="linha-p">${l.join('')}</div>`).join('');
+        const html = proximos.map(sab => {
+            const aula = aulaDo(sab);
+            const prof = aula ? professor(aula.professor) : null;
+            const past = aula ? professor(aula.pastoreio) : null;
+            const classe = sab.getTime() === sabadoDestaque.getTime() ? 'atual' : '';
+            return `<div class="card ${classe}">
+                <div class="cab">
+                    ${classe ? '<span class="selo">Episódio desta semana</span>' : ''}
+                    <strong>Sábado, ${sab.getDate()} de ${MESES_LONGOS[sab.getMonth()]}</strong>
+                </div>
+                ${imagemLicao(aula)}
+                ${aula && aula.licao ? `<div class="lic">Lição ${esc(aula.licao)}</div>` : ''}
+                <div class="t">${aula && aula.tema ? esc(aula.tema) : '<span class="vazio">Tema a definir</span>'}</div>
+                <div class="resp">
+                    <div><span>Lição:</span> ${prof ? esc(prof.nome) : '<em>a definir</em>'}</div>
+                    <div><span>Pastoreio:</span> ${past ? esc(past.nome) : '<em>a definir</em>'}</div>
+                </div>
+                <div class="acoes-item">
+                    ${aula && aula.link ? `<a class="ler" href="${esc(aula.link)}" target="_blank" rel="noopener">Ler a lição</a>` : ''}
+                    <button class="convite" type="button" onclick="convidar('${fmt(sab)}')"><i class="fa-brands fa-whatsapp"></i> Compartilhar tema da semana</button>
+                </div>
+            </div>`;
+        }).join('');
+        document.getElementById('lista').innerHTML =
+            (htmlPassados ? `<details class="sanfona"><summary>Episódios passados <span class="qtd">${passados.length}</span><i class="fa-solid fa-chevron-down"></i></summary><div class="passadas">${htmlPassados}</div></details>` : '') +
+            (html ? `<div class="cards">${html}</div>` : '<p class="vazio">Todos os sábados deste trimestre já passaram.</p>');
+    }
+
+    async function trocarTrimestre() {
+        const [ano, tri] = document.getElementById('trimestre').value.split('-').map(Number);
+        await carregarLicoes(`${ano}-0${tri + 1}`);
+        desenharLista();
+    }
+
+    function desenharFixos() {
+        const links = dados.linksFixos || [];
+        document.getElementById('fixos').hidden = links.length === 0;
+        document.getElementById('linksFixos').innerHTML = linksHTML(links);
+    }
+
+    // ===== Convite para a aula (WhatsApp) =====
+    // Ajuste aqui o horário e o endereço que vão no convite.
+    const CONVITE = { horario: '9h', local: 'IASD Glória · Rua da Glória, 276 · Glória, Blumenau/SC' };
+    function textoConvite(dataStr, licao, tema, link) {
+        const linhas = ['📖 *Você está convidado(a)!*', '',
+            `No sábado, ${dataStr.slice(0, 5)}, às ${CONVITE.horario}, a Classe ${dados.classe} da Escola Sabatina vai estudar:`];
+        if (licao || tema) linhas.push(`*${licao ? 'Lição ' + licao : ''}${licao && tema ? ': ' : ''}${tema || ''}*`);
+        linhas.push('', '📍 ' + CONVITE.local);
+        if (link) linhas.push('', 'Leia a lição antes: ' + link);
+        linhas.push('', 'Venha estudar a Bíblia com a gente!');
+        return linhas.join('\n');
+    }
+
+    function convidar(dataStr) {
+        const aula = aulaDo(parse(dataStr));
+        const t = textoConvite(dataStr, aula && aula.licao, aula && aula.tema, aula && aula.link);
+        window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener');
+    }
+
+    async function carregar() {
+        try {
+            const r = await fetch('api/escalas.php', { cache: 'no-store' });
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            dados = await r.json();
+            dados.escalaData = dados.escalaData || {};
+            dados.professores = dados.professores || {};
+        } catch (e) {
+            console.error(e);
+            document.getElementById('lista').innerHTML = '<p class="vazio">Não foi possível carregar a escala. Atualize a página para tentar de novo.</p>';
+            return;
+        }
+        const h = hoje();
+        await Promise.all([carregarLicoes(chaveTri(h)), carregarLicoes(chaveTri(proximoSabado()))]);
+        marcarSabadoAtual();
+        popularTrimestres();
+        desenharLista();
+        desenharFixos();
+    }
+    carregar();
+</script>
+</body>
+</html>
