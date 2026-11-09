@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Classe Vivendo o Reino - IASD Glória</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul: #1B4F8F; --azul-escuro: #123A6B; --dourado: #C9962B; --dourado-claro: #FBF3E2;
+            --fundo: #F3F5F8; --branco: #FFFFFF; --texto: #1E293B; --suave: #64748B; --borda: #E2E8F0;
+            --verde: #1F9D55; --vermelho: #DC2626;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.45; }
+        .app { max-width: 900px; margin: 0 auto; background: var(--branco); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,.05); }
+        @media (min-width: 760px) { body { padding: 24px; } .app { min-height: auto; border-radius: 14px; overflow: hidden; } }
+        header { background: linear-gradient(135deg, var(--azul-escuro), var(--azul)); color: #fff; padding: 22px 20px; }
+        header .topo { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+        header h1 { font-family: 'Roboto Slab', serif; font-size: 1.4rem; margin-top: 4px; }
+        .login { padding: 36px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+        .login i.grande { font-size: 2.4rem; color: var(--azul); }
+        .aviso-teste { background: var(--dourado-claro); color: #7A5A12; border-radius: 8px; padding: 10px 12px; font-size: .85rem; max-width: 420px; }
+        input { font: inherit; font-size: .95rem; padding: 9px 11px; border: 1px solid var(--borda); border-radius: 8px; width: 100%; max-width: 360px; }
+        .btn { font: inherit; font-size: .9rem; font-weight: 500; border: 0; border-radius: 8px; padding: 10px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; background: var(--azul); color: #fff; }
+        .btn.sec { background: var(--branco); color: var(--azul); border: 1px solid var(--borda); }
+        .btn.perigo { background: var(--branco); color: var(--vermelho); border: 1px solid var(--borda); }
+        .btn.mini { padding: 6px 10px; font-size: .8rem; }
+        .btn:focus-visible { outline: 3px solid var(--dourado); outline-offset: 2px; }
+        .painel { display: none; }
+        .barra { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 20px; background: var(--fundo); font-size: .85rem; }
+        .barra a { color: var(--azul); }
+        .abas { display: flex; border-bottom: 1px solid var(--borda); }
+        .aba { flex: 1; background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 8px; font: inherit; font-size: .88rem; color: var(--suave); cursor: pointer; }
+        .aba.ativa { color: var(--azul); border-bottom-color: var(--azul); font-weight: 500; }
+        .conteudo { display: none; padding: 20px; }
+        .conteudo.ativa { display: block; }
+        .lista { display: grid; gap: 10px; }
+        @media (min-width: 760px) { .lista { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+        .item { border: 1px solid var(--borda); border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; gap: 10px; align-items: center; min-width: 0; }
+        .item > div { min-width: 0; overflow-wrap: anywhere; }
+        .item small { display: block; color: var(--suave); font-size: .8rem; }
+        .form { margin-top: 20px; background: var(--fundo); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .form label { font-size: .9rem; display: flex; gap: 8px; align-items: center; }
+        .status { font-size: .88rem; min-height: 1.2em; }
+        .status.ok { color: var(--verde); } .status.erro { color: var(--vermelho); }
+        .dica { font-size: .85rem; color: var(--suave); margin-bottom: 14px; }
+        .loading { color: var(--suave); padding: 20px 0; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="topo">Escola Sabatina · IASD Glória</div>
+        <h1>Classe Vivendo o Reino · Painel admin</h1>
+    </header>
+
+    <div id="loginTela" class="login">
+        <i class="fa-solid fa-user-shield grande"></i>
+        <p>Acesso restrito a administradores.</p>
+        <div id="loginTeste" style="display:flex; flex-direction:column; gap:10px; align-items:center; width:100%">
+            <div class="aviso-teste"><i class="fa-solid fa-flask"></i> <strong>Modo de teste:</strong> o login ainda não confere a identidade (isso vem com o login do Google).</div>
+            <input type="email" id="emailInput" placeholder="seuemail@gmail.com" onkeydown="if(event.key==='Enter') fazerLogin()">
+            <button class="btn" type="button" onclick="fazerLogin()">Entrar</button>
+        </div>
+        <div id="loginGoogle" style="display:none"><div id="googleBotao"></div></div>
+        <div id="loginErro" class="status erro"></div>
+    </div>
+
+    <div id="painel" class="painel">
+        <div class="barra">
+            <span>Logado como <strong id="usuarioEmail"></strong></span>
+            <span style="display:flex; gap:14px; align-items:center">
+                <a href="editar.html">Editar escala</a>
+                <a href="index.html" target="_blank">Página pública</a>
+                <button class="btn sec mini" type="button" onclick="sair()">Sair</button>
+            </span>
+        </div>
+        <div class="abas">
+            <button class="aba ativa" data-aba="usuarios" onclick="mudarAba('usuarios')"><i class="fa-solid fa-users-gear"></i> Usuários</button>
+            <button class="aba" data-aba="backups" onclick="mudarAba('backups')"><i class="fa-solid fa-clock-rotate-left"></i> Backups</button>
+            <button class="aba" data-aba="historico" onclick="mudarAba('historico')"><i class="fa-solid fa-list-check"></i> Histórico</button>
+        </div>
+
+        <section id="abaUsuarios" class="conteudo ativa">
+            <p class="dica">Editores mexem nas aulas, nos professores e nos links. Administradores também veem este painel.</p>
+            <div id="usuarios" class="lista"><div class="loading">Carregando…</div></div>
+            <div class="form">
+                <strong><i class="fa-solid fa-user-plus"></i> Adicionar ou editar usuário</strong>
+                <input type="email" id="novoEmail" placeholder="email@gmail.com">
+                <label><input type="radio" name="papel" value="editor" checked style="width:auto"> Editor da classe</label>
+                <label><input type="radio" name="papel" value="admin" style="width:auto"> Administrador</label>
+                <div><button class="btn" type="button" onclick="salvarUsuario()">Salvar usuário</button></div>
+                <div id="usuarioStatus" class="status"></div>
+            </div>
+        </section>
+
+        <section id="abaBackups" class="conteudo">
+            <p class="dica">Uma cópia da escala é guardada a cada gravação (as 30 últimas). Restaurar troca a escala atual pela cópia escolhida, e a atual vira um backup também.</p>
+            <div id="backups" class="lista"><div class="loading">Carregando…</div></div>
+            <div id="backupStatus" class="status" style="margin-top:10px"></div>
+        </section>
+
+        <section id="abaHistorico" class="conteudo">
+            <div id="historico" class="lista"><div class="loading">Carregando…</div></div>
+        </section>
+    </div>
+</div>
+
+<script>
+    const CHAVE = 'vor_';
+    let CLASSE = 'Vivendo o Reino';
+    let usuarios = {};
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const dataHora = iso => new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' });
+
+    const getToken = () => sessionStorage.getItem(CHAVE + 'token');
+    function salvarSessao(d) {
+        sessionStorage.setItem(CHAVE + 'token', d.token);
+        sessionStorage.setItem(CHAVE + 'email', d.email);
+        sessionStorage.setItem(CHAVE + 'deps', JSON.stringify(d.departamentos));
+        sessionStorage.setItem(CHAVE + 'exp', d.expira_em);
+    }
+    function limparSessao() { ['token', 'email', 'deps', 'exp'].forEach(k => sessionStorage.removeItem(CHAVE + k)); }
+    function sair() { limparSessao(); if (window.google && google.accounts) google.accounts.id.disableAutoSelect(); location.reload(); }
+
+    async function prepararLogin() {
+        try {
+            const cfg = await (await fetch('api/login-google.php', { cache: 'no-store' })).json();
+            if (!cfg.client_id) return;
+            document.getElementById('loginTeste').style.display = 'none';
+            document.getElementById('loginGoogle').style.display = 'block';
+            const s = document.createElement('script');
+            s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
+            s.onload = () => {
+                google.accounts.id.initialize({ client_id: cfg.client_id, callback: r => concluirLogin('api/login-google.php', { credential: r.credential }) });
+                google.accounts.id.renderButton(document.getElementById('googleBotao'), { theme: 'outline', size: 'large', text: 'signin_with', locale: 'pt-BR' });
+            };
+            document.head.appendChild(s);
+        } catch (e) { console.error(e); }
+    }
+    async function concluirLogin(url, corpo) {
+        const erro = document.getElementById('loginErro');
+        erro.textContent = '';
+        try {
+            const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
+            const d = await r.json();
+            if (!r.ok || !d.sucesso) { erro.textContent = d.erro || 'E-mail não autorizado.'; return; }
+            if (!d.departamentos.includes('*')) { erro.textContent = 'Este e-mail é editor, não administrador. Use a página Editar escala.'; return; }
+            salvarSessao(d);
+            iniciar();
+        } catch (e) { erro.textContent = 'Erro de conexão. Tente novamente.'; }
+    }
+    function fazerLogin() {
+        const email = document.getElementById('emailInput').value.trim().toLowerCase();
+        if (email) concluirLogin('api/login-teste.php', { email });
+    }
+    async function chamarAPI(endpoint, corpo = {}) {
+        const r = await fetch('api/' + endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: getToken(), ...corpo }) });
+        let d; try { d = await r.json(); } catch (e) { d = { erro: `Resposta inválida do servidor (HTTP ${r.status}).` }; }
+        if (r.status === 401) { limparSessao(); location.reload(); }
+        return { ok: r.ok, dados: d };
+    }
+
+    async function iniciar() {
+        document.getElementById('loginTela').style.display = 'none';
+        document.getElementById('painel').style.display = 'block';
+        document.getElementById('usuarioEmail').textContent = sessionStorage.getItem(CHAVE + 'email');
+        try { CLASSE = (await (await fetch('api/escalas.php', { cache: 'no-store' })).json()).classe || CLASSE; } catch (e) {}
+        carregarUsuarios();
+    }
+    function mudarAba(aba) {
+        document.querySelectorAll('.aba').forEach(b => b.classList.toggle('ativa', b.dataset.aba === aba));
+        document.querySelectorAll('.conteudo').forEach(c => c.classList.remove('ativa'));
+        document.getElementById('aba' + aba[0].toUpperCase() + aba.slice(1)).classList.add('ativa');
+        ({ usuarios: carregarUsuarios, backups: carregarBackups, historico: carregarHistorico })[aba]();
+    }
+
+    // ===== Usuários =====
+    async function carregarUsuarios() {
+        const box = document.getElementById('usuarios');
+        const { ok, dados } = await chamarAPI('usuarios-listar.php');
+        if (!ok) { box.innerHTML = `<p class="status erro">${esc(dados.erro)}</p>`; return; }
+        usuarios = dados.usuarios || {};
+        const eu = sessionStorage.getItem(CHAVE + 'email');
+        box.innerHTML = Object.entries(usuarios).map(([email, deps]) => `
+            <div class="item">
+                <div><strong>${esc(email)}</strong><small>${deps.includes('*') ? 'Administrador' : 'Editor da classe'}</small></div>
+                <div style="display:flex; gap:6px">
+                    <button class="btn sec mini" type="button" onclick="editarUsuario('${esc(email)}')" aria-label="Editar"><i class="fa-solid fa-pen"></i></button>
+                    ${email === eu ? '' : `<button class="btn perigo mini" type="button" onclick="removerUsuario('${esc(email)}')" aria-label="Remover"><i class="fa-solid fa-trash"></i></button>`}
+                </div>
+            </div>`).join('') || '<p class="dica">Nenhum usuário.</p>';
+    }
+    function editarUsuario(email) {
+        document.getElementById('novoEmail').value = email;
+        document.querySelector(`input[name=papel][value=${usuarios[email].includes('*') ? 'admin' : 'editor'}]`).checked = true;
+    }
+    async function salvarUsuario() {
+        const st = document.getElementById('usuarioStatus');
+        const email = document.getElementById('novoEmail').value.trim().toLowerCase();
+        if (!email) { st.textContent = 'Informe o e-mail.'; st.className = 'status erro'; return; }
+        const admin = document.querySelector('input[name=papel]:checked').value === 'admin';
+        const { ok, dados } = await chamarAPI('usuarios-salvar.php', { acao: 'salvar', email, departamentos: admin ? ['*'] : [CLASSE] });
+        st.textContent = ok ? `${email} salvo.` : (dados.erro || 'Erro ao salvar.');
+        st.className = 'status ' + (ok ? 'ok' : 'erro');
+        if (ok) { document.getElementById('novoEmail').value = ''; carregarUsuarios(); }
+    }
+    async function removerUsuario(email) {
+        if (!window.confirm(`Remover o acesso de ${email}?`)) return;
+        const st = document.getElementById('usuarioStatus');
+        const { ok, dados } = await chamarAPI('usuarios-salvar.php', { acao: 'remover', email });
+        st.textContent = ok ? `${email} removido.` : (dados.erro || 'Erro ao remover.');
+        st.className = 'status ' + (ok ? 'ok' : 'erro');
+        if (ok) carregarUsuarios();
+    }
+
+    // ===== Backups =====
+    async function carregarBackups() {
+        const box = document.getElementById('backups');
+        box.innerHTML = '<div class="loading">Carregando…</div>';
+        const { ok, dados } = await chamarAPI('backups-listar.php');
+        if (!ok) { box.innerHTML = `<p class="status erro">${esc(dados.erro)}</p>`; return; }
+        const lista = dados.backups || [];
+        box.innerHTML = lista.length ? lista.map(b => `
+            <div class="item">
+                <div><strong>${dataHora(b.criado_em)}</strong><small>${(b.tamanho / 1024).toFixed(1)} KB</small></div>
+                <button class="btn sec mini" type="button" onclick="restaurar('${esc(b.arquivo)}', '${dataHora(b.criado_em)}')"><i class="fa-solid fa-rotate-left"></i> Restaurar</button>
+            </div>`).join('') : '<p class="dica">Ainda não há backups. Eles aparecem depois da primeira gravação pela área de edição.</p>';
+    }
+    async function restaurar(arquivo, quando) {
+        if (!window.confirm(`Restaurar a escala como estava em ${quando}?`)) return;
+        const st = document.getElementById('backupStatus');
+        const { ok, dados } = await chamarAPI('backups-restaurar.php', { arquivo });
+        st.textContent = ok ? 'Backup restaurado.' : (dados.erro || 'Erro ao restaurar.');
+        st.className = 'status ' + (ok ? 'ok' : 'erro');
+        if (ok) carregarBackups();
+    }
+
+    // ===== Histórico =====
+    const ACOES = {
+        salvar_aulas: 'Salvou aulas', criar_professor: 'Cadastrou professor', editar_professor: 'Editou professor',
+        remover_professor: 'Removeu professor', criar_usuario: 'Criou usuário', editar_usuario: 'Editou usuário',
+        remover_usuario: 'Removeu usuário', restaurar_backup: 'Restaurou backup'
+    };
+    function detalhe(r) {
+        const d = r.detalhes || {};
+        if (r.acao === 'salvar_aulas') return [(d.datas || []).join(', '), d.links_fixos ? 'links da classe' : ''].filter(Boolean).join(' · ');
+        if (d.professor) return d.professor;
+        if (d.email_alvo) return d.email_alvo;
+        if (d.arquivo_restaurado) return d.arquivo_restaurado;
+        return '';
+    }
+    async function carregarHistorico() {
+        const box = document.getElementById('historico');
+        box.innerHTML = '<div class="loading">Carregando…</div>';
+        const { ok, dados } = await chamarAPI('log-listar.php', { quantidade: 200 });
+        if (!ok) { box.innerHTML = `<p class="status erro">${esc(dados.erro)}</p>`; return; }
+        const regs = dados.registros || [];
+        box.innerHTML = regs.length ? regs.map(r => `
+            <div class="item"><div><strong>${esc(ACOES[r.acao] || r.acao)}</strong>
+            <small>${dataHora(r.data)} · ${esc(r.ator)}</small><small>${esc(detalhe(r))}</small></div></div>`).join('') : '<p class="dica">Nada registrado ainda.</p>';
+    }
+
+    const exp = Number(sessionStorage.getItem(CHAVE + 'exp') || 0);
+    const deps = JSON.parse(sessionStorage.getItem(CHAVE + 'deps') || '[]');
+    if (getToken() && exp * 1000 > Date.now() && deps.includes('*')) iniciar();
+    else prepararLogin();
+</script>
+</body>
+</html>

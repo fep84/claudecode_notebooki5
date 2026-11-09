@@ -1,0 +1,4 @@
+# Gerados no servidor
+escalas/**/cache/
+escalas/**/backups/
+escalas/**/log.ndjson

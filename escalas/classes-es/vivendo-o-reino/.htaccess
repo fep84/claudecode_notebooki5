@@ -1,0 +1,12 @@
+# Arquivos de dados usados só pela API (PHP lê normalmente).
+# Bloqueia o acesso direto pelo navegador a e-mails, telefones, log e backups.
+<FilesMatch "^(usuarios\.json|professores\.json|log\.ndjson)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+RedirectMatch 403 /(backups|cache)/

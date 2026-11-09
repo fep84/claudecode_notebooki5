@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Escala - Classe Vivendo o Reino - IASD Glória</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul: #1B4F8F; --azul-escuro: #123A6B; --azul-claro: #E6EEF8;
+            --dourado: #C9962B; --dourado-claro: #FBF3E2;
+            --fundo: #F3F5F8; --branco: #FFFFFF; --texto: #1E293B; --suave: #64748B; --borda: #E2E8F0;
+            --verde: #1F9D55; --vermelho: #DC2626; --ambar: #D97706;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.45; }
+        .app { max-width: 900px; margin: 0 auto; background: var(--branco); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,.05); }
+        @media (min-width: 760px) { body { padding: 24px; } .app { min-height: auto; border-radius: 14px; overflow: hidden; } }
+        header { background: linear-gradient(135deg, var(--azul-escuro), var(--azul)); color: #fff; padding: 22px 20px; }
+        header .topo { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+        header h1 { font-family: 'Roboto Slab', serif; font-size: 1.4rem; margin-top: 4px; }
+
+        .login { padding: 36px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+        .login i.grande { font-size: 2.4rem; color: var(--azul); }
+        .login input { width: 100%; max-width: 320px; }
+        .aviso-teste { background: var(--dourado-claro); color: #7A5A12; border-radius: 8px; padding: 10px 12px; font-size: .85rem; max-width: 420px; }
+
+        input, select { font: inherit; font-size: .95rem; padding: 9px 11px; border: 1px solid var(--borda); border-radius: 8px; background: var(--branco); color: var(--texto); width: 100%; }
+        input:focus, select:focus { outline: 2px solid var(--azul); outline-offset: 0; border-color: var(--azul); }
+        label { font-size: .8rem; font-weight: 500; color: var(--suave); display: block; margin-bottom: 4px; }
+
+        .btn { font: inherit; font-size: .9rem; font-weight: 500; border: 0; border-radius: 8px; padding: 10px 16px; cursor: pointer;
+               display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--azul); color: #fff; }
+        .btn:hover { background: var(--azul-escuro); }
+        .btn.sec { background: var(--branco); color: var(--azul); border: 1px solid var(--borda); }
+        .btn.sec:hover { border-color: var(--azul); }
+        .btn.wa { background: var(--verde); }
+        .btn.perigo { background: var(--branco); color: var(--vermelho); border: 1px solid var(--borda); }
+        .btn.mini { padding: 6px 10px; font-size: .8rem; }
+        .btn:disabled { opacity: .5; cursor: default; }
+        .btn:focus-visible { outline: 3px solid var(--dourado); outline-offset: 2px; }
+
+        .painel { display: none; }
+        .barra { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 20px; background: var(--fundo); font-size: .85rem; }
+        .barra a { color: var(--azul); }
+        .abas { display: flex; border-bottom: 1px solid var(--borda); overflow-x: auto; }
+        .aba { flex: 1; min-width: 110px; background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 8px; font: inherit; font-size: .88rem; color: var(--suave); cursor: pointer; }
+        .aba.ativa { color: var(--azul); border-bottom-color: var(--azul); font-weight: 500; }
+        .conteudo { display: none; padding: 20px; }
+        .conteudo.ativa { display: block; }
+
+        .topo-aba { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-bottom: 16px; }
+        .topo-aba > div { flex: 1; min-width: 200px; }
+        .dica { font-size: .85rem; color: var(--suave); margin-bottom: 14px; }
+
+        .cards { display: grid; gap: 14px; }
+        @media (min-width: 760px) { .cards { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+        .card { border: 1px solid var(--borda); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+        .card.alterado { border-color: var(--ambar); box-shadow: 0 0 0 1px var(--ambar); }
+        .card.passada { opacity: .65; }
+        .card .cab { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+        .card .cab strong { font-size: 1rem; }
+        .card .capa { width: 100%; aspect-ratio: 1102 / 425; object-fit: cover; border-radius: 8px; background: var(--azul-claro); }
+        .oficial-tema { font-weight: 500; }
+        .oficial-tema span { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--dourado); }
+        .card .estado { font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+        .estado.ok { background: #E3F4EA; color: var(--verde); }
+        .estado.falta { background: var(--fundo); color: var(--suave); }
+        .estado.mudou { background: var(--dourado-claro); color: var(--ambar); }
+        .grade { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 8px; }
+        .link-linha { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.4fr) auto; gap: 6px; align-items: center; }
+        .link-linha button { background: none; border: 0; color: var(--suave); cursor: pointer; padding: 6px; font-size: 1rem; }
+        .link-linha button:hover { color: var(--vermelho); }
+        .acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .rodape-salvar { position: sticky; bottom: 0; background: var(--branco); border-top: 1px solid var(--borda); padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .status { font-size: .88rem; min-height: 1.2em; }
+        .status.ok { color: var(--verde); } .status.erro { color: var(--vermelho); }
+
+        .prof { display: grid; grid-template-columns: 56px minmax(0,1fr) auto; gap: 12px; align-items: center; border: 1px solid var(--borda); border-radius: 12px; padding: 12px; }
+        .foto { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: var(--azul); color: #fff; display: grid; place-items: center; font-family: 'Roboto Slab', serif; font-weight: 700; }
+        .foto.g { width: 96px; height: 96px; font-size: 1.8rem; }
+        .prof .nome { font-weight: 500; overflow-wrap: anywhere; }
+        .prof .tel { font-size: .85rem; color: var(--suave); }
+        .form-prof { margin-top: 20px; background: var(--fundo); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .form-prof h3 { font-size: 1rem; }
+        .foto-campo { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+        .vazio { color: var(--suave); font-style: italic; padding: 8px 0; }
+        .loading { color: var(--suave); padding: 20px 0; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="topo">Escola Sabatina · IASD Glória</div>
+        <h1>Classe Vivendo o Reino · Área do responsável</h1>
+    </header>
+
+    <!-- ===== Login ===== -->
+    <div id="loginTela" class="login">
+        <i class="fa-solid fa-chalkboard-user grande"></i>
+        <p>Entre para editar a escala de responsáveis.</p>
+        <div id="loginTeste" style="display:flex; flex-direction:column; gap:10px; align-items:center; width:100%">
+            <div class="aviso-teste"><i class="fa-solid fa-flask"></i> <strong>Modo de teste:</strong> o login ainda não confere a identidade (isso vem com o login do Google).</div>
+            <input type="email" id="emailInput" placeholder="seuemail@gmail.com" autocomplete="email" onkeydown="if(event.key==='Enter') fazerLogin()">
+            <button class="btn" type="button" onclick="fazerLogin()">Entrar</button>
+        </div>
+        <div id="loginGoogle" style="display:none"><div id="googleBotao"></div></div>
+        <div id="loginErro" class="status erro"></div>
+        <a href="index.html" style="color:var(--azul); font-size:.88rem">Ver a escala pública</a>
+    </div>
+
+    <!-- ===== Painel ===== -->
+    <div id="painel" class="painel">
+        <div class="barra">
+            <span>Logado como <strong id="usuarioEmail"></strong></span>
+            <span style="display:flex; gap:14px; align-items:center">
+                <a href="index.html" target="_blank">Ver página pública</a>
+                <a href="admin.html" id="linkAdmin" style="display:none">Painel admin</a>
+                <button class="btn sec mini" type="button" onclick="sair()">Sair</button>
+            </span>
+        </div>
+        <div class="abas" role="tablist">
+            <button class="aba ativa" data-aba="aulas" onclick="mudarAba('aulas')"><i class="fa-solid fa-calendar-days"></i> Aulas</button>
+            <button class="aba" data-aba="professores" onclick="mudarAba('professores')"><i class="fa-solid fa-users"></i> Responsáveis</button>
+            <button class="aba" data-aba="links" onclick="mudarAba('links')"><i class="fa-solid fa-link"></i> Links da classe</button>
+        </div>
+
+        <!-- Aulas -->
+        <section id="abaAulas" class="conteudo ativa">
+            <div class="topo-aba">
+                <div>
+                    <label for="trimestre">Trimestre</label>
+                    <select id="trimestre" onchange="desenharAulas()"></select>
+                </div>
+            </div>
+            <p class="dica">Escolha o responsável pela lição e o responsável pelo pastoreio de cada sábado. A lição, o tema e a imagem vêm sozinhos do site oficial da Escola Sabatina. Depois clique em <strong>Salvar alterações</strong>.</p>
+            <div id="semProfessores" class="aviso-teste" style="display:none; margin-bottom:14px">Cadastre os responsáveis na aba <strong>Responsáveis</strong> para poder escolhê-los aqui.</div>
+            <div id="cardsAulas" class="cards"><div class="loading">Carregando…</div></div>
+        </section>
+
+        <!-- Professores -->
+        <section id="abaProfessores" class="conteudo">
+            <p class="dica">A foto e o nome aparecem na página pública. O WhatsApp fica só aqui, para mandar o lembrete.</p>
+            <div id="listaProfessores" class="cards"></div>
+            <div class="form-prof" id="formProf">
+                <h3 id="formTitulo"><i class="fa-solid fa-user-plus"></i> Novo responsável</h3>
+                <div>
+                    <label for="profNome">Nome</label>
+                    <input id="profNome" maxlength="80" placeholder="Ex.: Ana Souza">
+                </div>
+                <div>
+                    <label for="profTel">WhatsApp (com DDD)</label>
+                    <input id="profTel" maxlength="25" inputmode="tel" placeholder="47 99999-0000">
+                </div>
+                <div>
+                    <label>Foto</label>
+                    <div class="foto-campo">
+                        <div id="fotoPrevia" class="foto g"><i class="fa-solid fa-user"></i></div>
+                        <div style="display:flex; flex-direction:column; gap:8px">
+                            <input type="file" id="profFoto" accept="image/*" onchange="escolherFoto(this)">
+                            <button class="btn perigo mini" type="button" id="btnTirarFoto" style="display:none" onclick="tirarFoto()">Tirar a foto</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="acoes">
+                    <button class="btn" type="button" id="btnSalvarProf" onclick="salvarProfessor()"><i class="fa-solid fa-floppy-disk"></i> Salvar responsável</button>
+                    <button class="btn sec" type="button" id="btnCancelarProf" style="display:none" onclick="limparFormProf()">Cancelar</button>
+                </div>
+                <div id="profStatus" class="status"></div>
+            </div>
+        </section>
+
+        <!-- Links da classe -->
+        <section id="abaLinks" class="conteudo">
+            <p class="dica">Estes links aparecem em "Links úteis" na página pública e vão junto quando alguém compartilha a semana.</p>
+            <div id="linksFixos" style="display:flex; flex-direction:column; gap:8px"></div>
+            <div class="acoes" style="margin-top:12px">
+                <button class="btn sec" type="button" onclick="adicionarLinkFixo()"><i class="fa-solid fa-plus"></i> Adicionar link</button>
+                <button class="btn" type="button" onclick="salvarLinksFixos()"><i class="fa-solid fa-floppy-disk"></i> Salvar links</button>
+            </div>
+            <div id="linksStatus" class="status" style="margin-top:10px"></div>
+        </section>
+
+        <div class="rodape-salvar" id="rodapeAulas">
+            <button class="btn" type="button" id="btnSalvar" onclick="salvarAulas()"><i class="fa-solid fa-floppy-disk"></i> Salvar alterações</button>
+            <span id="aulasStatus" class="status"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const CHAVE = 'vor_';   // prefixo da sessão, separado das escalas DC e MJ
+    const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    let escalaData = {}, linksFixos = [], professores = {}, classe = 'Vivendo o Reino';
+    const alterados = new Set();
+    let editandoId = '', fotoNova = null;
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const fmt = d => `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+    const curta = s => s.slice(0, 5);
+    const parse = s => { const [d, m, a] = s.split('/').map(Number); return new Date(a, m - 1, d); };
+    const iniciais = n => n.split(/\s+/).filter(Boolean).map(p => p[0]).slice(0, 2).join('').toUpperCase() || '?';
+    const hoje = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+
+    // ===== Sessão =====
+    const getToken = () => sessionStorage.getItem(CHAVE + 'token');
+    function salvarSessao(d) {
+        sessionStorage.setItem(CHAVE + 'token', d.token);
+        sessionStorage.setItem(CHAVE + 'email', d.email);
+        sessionStorage.setItem(CHAVE + 'deps', JSON.stringify(d.departamentos));
+        sessionStorage.setItem(CHAVE + 'exp', d.expira_em);
+    }
+    function limparSessao() { ['token', 'email', 'deps', 'exp'].forEach(k => sessionStorage.removeItem(CHAVE + k)); }
+    function sair() {
+        if (alterados.size && !window.confirm('Há alterações não salvas. Sair mesmo assim?')) return;
+        limparSessao();
+        if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
+        location.reload();
+    }
+
+    async function prepararLogin() {
+        try {
+            const r = await fetch('api/login-google.php', { cache: 'no-store' });
+            const cfg = await r.json();
+            if (!cfg.client_id) return;
+            document.getElementById('loginTeste').style.display = 'none';
+            document.getElementById('loginGoogle').style.display = 'block';
+            const s = document.createElement('script');
+            s.src = 'https://accounts.google.com/gsi/client';
+            s.async = true;
+            s.onload = () => {
+                google.accounts.id.initialize({ client_id: cfg.client_id, callback: loginComGoogle });
+                google.accounts.id.renderButton(document.getElementById('googleBotao'), { theme: 'outline', size: 'large', text: 'signin_with', locale: 'pt-BR' });
+            };
+            s.onerror = () => { document.getElementById('loginErro').textContent = 'Não foi possível carregar o login do Google.'; };
+            document.head.appendChild(s);
+        } catch (e) { console.error(e); }
+    }
+    async function concluirLogin(url, corpo) {
+        const erro = document.getElementById('loginErro');
+        erro.textContent = '';
+        try {
+            const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
+            const d = await r.json();
+            if (!r.ok || !d.sucesso) { erro.textContent = d.erro || 'E-mail não autorizado.'; return; }
+            salvarSessao(d);
+            iniciarPainel();
+        } catch (e) { erro.textContent = 'Erro de conexão. Tente novamente.'; console.error(e); }
+    }
+    const loginComGoogle = resp => concluirLogin('api/login-google.php', { credential: resp.credential });
+    function fazerLogin() {
+        const email = document.getElementById('emailInput').value.trim().toLowerCase();
+        if (!email) { document.getElementById('loginErro').textContent = 'Digite um e-mail.'; return; }
+        concluirLogin('api/login-teste.php', { email });
+    }
+
+    async function chamarAPI(endpoint, corpo = {}) {
+        const r = await fetch('api/' + endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: getToken(), ...corpo }) });
+        let d;
+        try { d = await r.json(); } catch (e) { d = { erro: `Resposta inválida do servidor (HTTP ${r.status}).` }; }
+        if (r.status === 401) { limparSessao(); alert(d.erro || 'Sessão expirada.'); location.reload(); }
+        return { ok: r.ok, dados: d };
+    }
+
+    async function iniciarPainel() {
+        const deps = JSON.parse(sessionStorage.getItem(CHAVE + 'deps') || '[]');
+        document.getElementById('loginTela').style.display = 'none';
+        document.getElementById('painel').style.display = 'block';
+        document.getElementById('usuarioEmail').textContent = sessionStorage.getItem(CHAVE + 'email');
+        document.getElementById('linkAdmin').style.display = deps.includes('*') ? '' : 'none';
+        await carregarTudo();
+        popularTrimestres();
+        desenharAulas();
+        desenharProfessores();
+        desenharLinksFixos();
+    }
+
+    async function carregarTudo() {
+        const [pub, prof] = await Promise.all([
+            fetch('api/escalas.php', { cache: 'no-store' }).then(r => r.json()),
+            chamarAPI('professores-listar.php')
+        ]);
+        escalaData = pub.escalaData || {};
+        linksFixos = pub.linksFixos || [];
+        classe = pub.classe || classe;
+        professores = (prof.ok && prof.dados.professores) || {};
+    }
+
+    function mudarAba(aba) {
+        document.querySelectorAll('.aba').forEach(b => b.classList.toggle('ativa', b.dataset.aba === aba));
+        document.querySelectorAll('.conteudo').forEach(c => c.classList.remove('ativa'));
+        document.getElementById('aba' + aba[0].toUpperCase() + aba.slice(1)).classList.add('ativa');
+        document.getElementById('rodapeAulas').style.display = aba === 'aulas' ? '' : 'none';
+        if (aba === 'aulas') desenharAulas();
+    }
+
+    // ===== Aulas =====
+    function sabadosDoTrimestre(ano, tri) {
+        const d = new Date(ano, tri * 3, 1), fim = new Date(ano, tri * 3 + 3, 0), lista = [];
+        d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7));
+        for (; d <= fim; d.setDate(d.getDate() + 7)) lista.push(fmt(d));
+        return lista;
+    }
+    function popularTrimestres() {
+        const sel = document.getElementById('trimestre');
+        const h = hoje(); let ano = h.getFullYear(), tri = Math.floor(h.getMonth() / 3);
+        const ops = [];
+        for (let i = -1; i <= 2; i++) {
+            let t = tri + i, a = ano;
+            if (t < 0) { t += 4; a--; } if (t > 3) { t -= 4; a++; }
+            ops.push(`<option value="${a}-${t}">${t + 1}º trimestre de ${a}</option>`);
+        }
+        sel.innerHTML = ops.join('');
+        sel.value = `${ano}-${tri}`;
+    }
+
+    function opcoesProfessor(selecionado) {
+        const ids = Object.keys(professores);
+        let html = '<option value="">— a definir —</option>';
+        ids.forEach(id => { html += `<option value="${esc(id)}" ${id === selecionado ? 'selected' : ''}>${esc(professores[id].nome)}</option>`; });
+        return html;
+    }
+    function linhaLink(l = { titulo: '', url: '' }, classeLinha = '') {
+        return `<div class="link-linha ${classeLinha}">
+            <input placeholder="Título (ex.: Vídeo)" maxlength="60" value="${esc(l.titulo)}" aria-label="Título do link">
+            <input placeholder="https://…" type="url" maxlength="500" value="${esc(l.url)}" aria-label="Endereço do link">
+            <button type="button" title="Tirar link" aria-label="Tirar link" onclick="tirarLink(this)"><i class="fa-solid fa-xmark"></i></button>
+        </div>`;
+    }
+
+    const licoesOficiais = {};
+    async function carregarLicoes(chave) {
+        if (licoesOficiais[chave]) return;
+        try {
+            const r = await fetch('api/licoes.php?trimestre=' + chave);
+            licoesOficiais[chave] = r.ok ? ((await r.json()).licoes || {}) : {};
+        } catch (e) { licoesOficiais[chave] = {}; }
+    }
+    function oficialDe(data) {
+        const d = parse(data);
+        return (licoesOficiais[`${d.getFullYear()}-0${Math.floor(d.getMonth() / 3) + 1}`] || {})[data] || null;
+    }
+    async function desenharAulas() {
+        const [ano, tri] = document.getElementById('trimestre').value.split('-').map(Number);
+        await carregarLicoes(`${ano}-0${tri + 1}`);
+        document.getElementById('semProfessores').style.display = Object.keys(professores).length ? 'none' : '';
+        const h = hoje();
+        const html = sabadosDoTrimestre(ano, tri).map(data => {
+            const a = escalaData[data] || { professor: '', pastoreio: '', licao: '', tema: '', links: [] };
+            const d = parse(data);
+            const tem = escalaData[data] && escalaData[data].professor && escalaData[data].pastoreio;
+            const o = oficialDe(data);
+            return `<div class="card ${d < h ? 'passada' : ''}" data-data="${data}">
+                <div class="cab">
+                    <strong>Sábado, ${d.getDate()} de ${MESES[d.getMonth()]}</strong>
+                    <span class="estado ${tem ? 'ok' : 'falta'}">${tem ? 'Definido' : 'A definir'}</span>
+                </div>
+                ${o && o.capa ? `<img class="capa" src="${esc(o.capa)}" alt="Capa da lição ${esc(o.numero)}" loading="lazy">` : ''}
+                ${o ? `<div class="oficial-tema"><span>Lição ${esc(o.numero)}</span>${esc(o.tema)}</div>` : ''}
+                <div>
+                    <label>Responsável pela Lição</label>
+                    <select class="c-prof" aria-label="Responsável pela Lição de ${data}">${opcoesProfessor(a.professor)}</select>
+                </div>
+                <div>
+                    <label>Responsável pelo Pastoreio</label>
+                    <select class="c-past" aria-label="Responsável pelo Pastoreio de ${data}">${opcoesProfessor(a.pastoreio || '')}</select>
+                </div>
+                <div class="acoes">
+                    <button class="btn wa mini" type="button" onclick="lembrete(this)"><i class="fa-brands fa-whatsapp"></i> Lembrete</button>
+                    <button class="btn wa mini" type="button" onclick="convite(this)"><i class="fa-brands fa-whatsapp"></i> Compartilhar tema da semana</button>
+                    <button class="btn perigo mini" type="button" onclick="limparAula(this)"><i class="fa-solid fa-eraser"></i> Limpar</button>
+                </div>
+            </div>`;
+        }).join('');
+        const cont = document.getElementById('cardsAulas');
+        cont.innerHTML = html;
+        cont.querySelectorAll('.card').forEach(c => {
+            if (alterados.has(c.dataset.data)) marcar(c);
+            c.addEventListener('input', () => marcar(c));
+            c.addEventListener('change', () => marcar(c));
+        });
+    }
+
+    // Guarda as edições dos cards em memória para não perder ao trocar de trimestre
+    const rascunhos = {};
+    function marcar(card) {
+        alterados.add(card.dataset.data);
+        rascunhos[card.dataset.data] = lerCard(card);
+        card.classList.add('alterado');
+        const e = card.querySelector('.estado');
+        e.className = 'estado mudou'; e.textContent = 'Não salvo';
+        document.getElementById('aulasStatus').textContent = `${alterados.size} sábado(s) com alterações não salvas.`;
+        document.getElementById('aulasStatus').className = 'status';
+    }
+    function lerCard(card) {
+        return {
+            professor: card.querySelector('.c-prof').value,
+            pastoreio: card.querySelector('.c-past').value,
+            licao: '',
+            tema: '',
+            links: []
+        };
+    }
+    function tirarLink(btn) {
+        const card = btn.closest('.card');
+        btn.closest('.link-linha').remove();
+        if (card) marcar(card);
+    }
+    function limparAula(btn) {
+        const card = btn.closest('.card');
+        card.querySelector('.c-prof').value = '';
+        card.querySelector('.c-past').value = '';
+        marcar(card);
+    }
+
+
+    // ===== Convite para a aula (WhatsApp) =====
+    // Ajuste aqui o horário e o endereço que vão no convite.
+    const CONVITE = { horario: '9h', local: 'IASD Glória · Rua da Glória, 276 · Glória, Blumenau/SC' };
+    function textoConvite(dataStr, licao, tema, link) {
+        const linhas = ['📖 *Você está convidado(a)!*', '',
+            `No sábado, ${dataStr.slice(0, 5)}, às ${CONVITE.horario}, a Classe ${classe} da Escola Sabatina vai estudar:`];
+        if (licao || tema) linhas.push(`*${licao ? 'Lição ' + licao : ''}${licao && tema ? ': ' : ''}${tema || ''}*`);
+        linhas.push('', '📍 ' + CONVITE.local);
+        if (link) linhas.push('', 'Leia a lição antes: ' + link);
+        linhas.push('', 'Venha estudar a Bíblia com a gente!');
+        return linhas.join('\n');
+    }
+
+    function convite(btn) {
+        const data = btn.closest('.card').dataset.data, o = oficialDe(data);
+        const t = textoConvite(data, o && o.numero, o && o.tema, o && o.link);
+        window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener');
+    }
+
+    function numeroWhats(tel) {
+        let n = String(tel || '').replace(/\D/g, '');
+        if (!n) return '';
+        if (n.length <= 11) n = '55' + n.replace(/^0+/, '');
+        return n;
+    }
+    function lembrete(btn) {
+        const card = btn.closest('.card');
+        const a = lerCard(card), data = card.dataset.data, o = oficialDe(data);
+        if (o) { a.licao = a.licao || o.numero; a.tema = a.tema || o.tema; }
+        const p = professores[a.professor];
+        if (!p) { alert('Escolha o responsável pela lição deste sábado primeiro.'); return; }
+        const primeiro = p.nome.split(' ')[0];
+        const linhas = [`Olá, ${primeiro}! Lembrete da Classe ${classe}: no sábado, ${curta(data)}, a aula é com você.`];
+        if (a.licao || a.tema) linhas.push(`${a.licao ? 'Lição ' + a.licao : 'Tema'}${a.tema ? ': ' + a.tema : ''}`);
+        const links = [...(o && o.link ? [{ titulo: 'Ler a lição', url: o.link }] : []), ...linksFixos];
+        if (links.length) { linhas.push(''); links.forEach(l => linhas.push(`${l.titulo || 'Link'}: ${l.url}`)); }
+        linhas.push('', 'Obrigado e bom estudo!');
+        const num = numeroWhats(p.telefone);
+        window.open(`https://wa.me/${num}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
+    }
+
+    async function salvarAulas() {
+        const st = document.getElementById('aulasStatus'), btn = document.getElementById('btnSalvar');
+        if (!alterados.size) { st.textContent = 'Nada para salvar.'; st.className = 'status'; return; }
+        const atualizacoes = {};
+        alterados.forEach(d => { atualizacoes[d] = rascunhos[d]; });
+        btn.disabled = true; st.textContent = 'Salvando…'; st.className = 'status';
+        const { ok, dados } = await chamarAPI('salvar-aulas.php', { atualizacoes });
+        btn.disabled = false;
+        if (!ok) { st.textContent = dados.erro || 'Não foi possível salvar.'; st.className = 'status erro'; return; }
+        Object.entries(atualizacoes).forEach(([d, a]) => {
+            const vazia = !a.professor && !a.pastoreio && !a.licao && !a.tema && !a.links.length;
+            if (vazia) delete escalaData[d]; else escalaData[d] = a;
+        });
+        alterados.clear();
+        Object.keys(rascunhos).forEach(k => delete rascunhos[k]);
+        desenharAulas();
+        st.textContent = 'Escala salva.'; st.className = 'status ok';
+    }
+
+    // ===== Professores =====
+    function fotoHTML(p, classe = '') {
+        if (p && p.foto) return `<img class="foto ${classe}" src="${esc(p.foto)}" alt="">`;
+        return `<div class="foto ${classe}">${p ? esc(iniciais(p.nome)) : '<i class="fa-solid fa-user"></i>'}</div>`;
+    }
+    function desenharProfessores() {
+        const ids = Object.keys(professores);
+        document.getElementById('listaProfessores').innerHTML = ids.length ? ids.map(id => {
+            const p = professores[id];
+            return `<div class="prof">
+                ${fotoHTML(p)}
+                <div style="min-width:0"><div class="nome">${esc(p.nome)}</div><div class="tel">${p.telefone ? esc(p.telefone) : 'Sem WhatsApp'}</div></div>
+                <div class="acoes">
+                    <button class="btn sec mini" type="button" onclick="editarProfessor('${esc(id)}')" aria-label="Editar ${esc(p.nome)}"><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn perigo mini" type="button" onclick="removerProfessor('${esc(id)}')" aria-label="Remover ${esc(p.nome)}"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>`;
+        }).join('') : '<p class="vazio">Nenhum responsável cadastrado ainda.</p>';
+    }
+    function limparFormProf() {
+        editandoId = ''; fotoNova = null;
+        document.getElementById('profNome').value = '';
+        document.getElementById('profTel').value = '';
+        document.getElementById('profFoto').value = '';
+        document.getElementById('fotoPrevia').outerHTML = '<div id="fotoPrevia" class="foto g"><i class="fa-solid fa-user"></i></div>';
+        document.getElementById('formTitulo').innerHTML = '<i class="fa-solid fa-user-plus"></i> Novo responsável';
+        document.getElementById('btnCancelarProf').style.display = 'none';
+        document.getElementById('btnTirarFoto').style.display = 'none';
+    }
+    function mostrarPrevia(src, nome) {
+        const el = document.getElementById('fotoPrevia');
+        el.outerHTML = src ? `<img id="fotoPrevia" class="foto g" src="${esc(src)}" alt="">` : `<div id="fotoPrevia" class="foto g">${nome ? esc(iniciais(nome)) : '<i class="fa-solid fa-user"></i>'}</div>`;
+        document.getElementById('btnTirarFoto').style.display = src ? '' : 'none';
+    }
+    function editarProfessor(id) {
+        const p = professores[id];
+        editandoId = id; fotoNova = null;
+        document.getElementById('profNome').value = p.nome;
+        document.getElementById('profTel').value = p.telefone || '';
+        document.getElementById('profFoto').value = '';
+        mostrarPrevia(p.foto, p.nome);
+        document.getElementById('formTitulo').innerHTML = `<i class="fa-solid fa-pen"></i> Editar ${esc(p.nome)}`;
+        document.getElementById('btnCancelarProf').style.display = '';
+        document.getElementById('profStatus').textContent = '';
+        document.getElementById('formProf').scrollIntoView({ behavior: 'smooth' });
+    }
+    function tirarFoto() {
+        fotoNova = 'remover';
+        document.getElementById('profFoto').value = '';
+        mostrarPrevia('', document.getElementById('profNome').value);
+    }
+    // Recorta a foto em quadrado e reduz para 400x400 antes de enviar
+    function escolherFoto(input) {
+        const arq = input.files && input.files[0];
+        if (!arq) return;
+        if (!arq.type.startsWith('image/')) { alert('Escolha um arquivo de imagem.'); input.value = ''; return; }
+        const url = URL.createObjectURL(arq);
+        const img = new Image();
+        img.onload = () => {
+            const lado = Math.min(img.width, img.height), T = 400;
+            const c = document.createElement('canvas'); c.width = T; c.height = T;
+            const ctx = c.getContext('2d');
+            ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, T, T);
+            ctx.drawImage(img, (img.width - lado) / 2, (img.height - lado) / 2, lado, lado, 0, 0, T, T);
+            fotoNova = c.toDataURL('image/jpeg', 0.85);
+            mostrarPrevia(fotoNova);
+            URL.revokeObjectURL(url);
+        };
+        img.onerror = () => { alert('Não foi possível ler esta imagem. Tente uma foto JPG ou PNG.'); input.value = ''; };
+        img.src = url;
+    }
+    async function salvarProfessor() {
+        const st = document.getElementById('profStatus'), btn = document.getElementById('btnSalvarProf');
+        const nome = document.getElementById('profNome').value.trim();
+        if (!nome) { st.textContent = 'Informe o nome.'; st.className = 'status erro'; return; }
+        const corpo = { acao: 'salvar', id: editandoId, nome, telefone: document.getElementById('profTel').value.trim() };
+        if (fotoNova) corpo.foto = fotoNova;
+        btn.disabled = true; st.textContent = 'Salvando…'; st.className = 'status';
+        const { ok, dados } = await chamarAPI('professores-salvar.php', corpo);
+        btn.disabled = false;
+        if (!ok) { st.textContent = dados.erro || 'Não foi possível salvar.'; st.className = 'status erro'; return; }
+        professores = dados.professores;
+        limparFormProf();
+        desenharProfessores();
+        st.textContent = `${nome} salvo.`; st.className = 'status ok';
+    }
+    async function removerProfessor(id) {
+        const p = professores[id];
+        if (!window.confirm(`Remover ${p.nome} do cadastro?`)) return;
+        const st = document.getElementById('profStatus');
+        const { ok, dados } = await chamarAPI('professores-salvar.php', { acao: 'remover', id });
+        if (!ok) { st.textContent = dados.erro || 'Não foi possível remover.'; st.className = 'status erro'; return; }
+        professores = dados.professores;
+        if (editandoId === id) limparFormProf();
+        desenharProfessores();
+        st.textContent = `${p.nome} removido.`; st.className = 'status ok';
+    }
+
+    // ===== Links da classe =====
+    function desenharLinksFixos() {
+        document.getElementById('linksFixos').innerHTML = linksFixos.length ? linksFixos.map(l => linhaLink(l)).join('') : '';
+    }
+    function adicionarLinkFixo() {
+        const box = document.getElementById('linksFixos');
+        if (box.children.length >= 8) { alert('A classe aceita até 8 links.'); return; }
+        box.insertAdjacentHTML('beforeend', linhaLink());
+        box.lastElementChild.querySelector('input').focus();
+    }
+    async function salvarLinksFixos() {
+        const st = document.getElementById('linksStatus');
+        const links = [...document.querySelectorAll('#linksFixos .link-linha')].map(l => {
+            const [t, u] = l.querySelectorAll('input');
+            return { titulo: t.value.trim(), url: u.value.trim() };
+        }).filter(l => l.url);
+        st.textContent = 'Salvando…'; st.className = 'status';
+        const { ok, dados } = await chamarAPI('salvar-aulas.php', { atualizacoes: {}, linksFixos: links });
+        if (!ok) { st.textContent = dados.erro || 'Não foi possível salvar.'; st.className = 'status erro'; return; }
+        linksFixos = links;
+        desenharLinksFixos();
+        st.textContent = 'Links salvos.'; st.className = 'status ok';
+    }
+
+    window.addEventListener('beforeunload', e => { if (alterados.size) { e.preventDefault(); e.returnValue = ''; } });
+
+    // ===== Início =====
+    const exp = Number(sessionStorage.getItem(CHAVE + 'exp') || 0);
+    if (getToken() && exp * 1000 > Date.now()) iniciarPainel();
+    else { limparSessao(); prepararLogin(); }
+</script>
+</body>
+</html>
