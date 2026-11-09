@@ -1,4 +1,6 @@
-# Gerados no servidor
-escalas/**/cache/
-escalas/**/backups/
-escalas/**/log.ndjson
+# Gerados ou editados no servidor: não versionar
+**/cache/
+**/backups/
+**/log.ndjson
+escala-direcao-de-culto/escalas.json
+escala-direcao-de-culto/usuarios.json

@@ -1,14 +1,14 @@
-# claudecode_notebooki5
+# iasdgloria
 
-## Chave SSH pública do notebook i5
+Projetos do site da Igreja Adventista do Sétimo Dia Glória (Blumenau/SC), `iasdgloria.com.br`.
 
-Arquivo: `keys/notebook-i5.pub` (ed25519).
+| Pasta | Projeto | Endereço no site |
+|---|---|---|
+| [`escala-direcao-de-culto/`](escala-direcao-de-culto/) | Escala de Direção de Culto (direção, pregadores, louvores e outros departamentos) | iasdgloria.com.br/escalas/direcao-de-culto/ |
+| [`escala-classe-escola-sabatina/`](escala-classe-escola-sabatina/) | Escala de responsáveis das classes da Escola Sabatina (primeira classe: Vivendo o Reino) | iasdgloria.com.br/escalas/classes-es/ |
+| [`keys/`](keys/) | Chaves SSH públicas dos computadores (a privada nunca vai para o repositório) | — |
 
-Para autorizar o notebook em um servidor:
+## Regras para todos os projetos
 
-```sh
-cat keys/notebook-i5.pub >> ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-```
-
-Apenas a chave pública fica neste repositório. A privada nunca deve ser commitada.
+- O código daqui é uma cópia de referência. Os dados (escalas, cadastros, usuários) são editados pelo site e ficam só no servidor: nunca suba arquivos `.json` de dados por cima dos do servidor.
+- Em cada `api/config.php`, a `sessao_secreta` está trocada por um texto de exemplo. A chave verdadeira fica só no servidor.

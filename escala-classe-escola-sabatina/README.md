@@ -1,7 +1,7 @@
-# Escalas das classes da Escola Sabatina (classes-es)
+# Escala das classes da Escola Sabatina
 
 Código da escala de responsáveis por classe, publicado em `iasdgloria.com.br/escalas/classes-es/`.
-A primeira classe é `vivendo-o-reino/`. Esta pasta espelha o que está no servidor, dentro de `/escalas/`.
+A primeira classe é `vivendo-o-reino/`. No servidor, o conteúdo desta pasta fica em `/escalas/classes-es/`.
 
 ## Cuidados
 
